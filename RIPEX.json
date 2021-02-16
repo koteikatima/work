@@ -1,0 +1,3286 @@
+{
+  "imports": {
+    "class": "imports",
+    "SNMPv2-CONF": [
+      "MODULE-COMPLIANCE",
+      "OBJECT-GROUP",
+      "NOTIFICATION-GROUP"
+    ],
+    "SNMPv2-MIB": [
+      "snmpTraps"
+    ],
+    "SNMPv2-SMI": [
+      "OBJECT-TYPE",
+      "enterprises",
+      "Integer32",
+      "iso",
+      "Counter64",
+      "IpAddress",
+      "Unsigned32",
+      "Counter32",
+      "NOTIFICATION-TYPE",
+      "MODULE-IDENTITY",
+      "Gauge32",
+      "Bits",
+      "MibIdentifier",
+      "mib-2",
+      "OBJECT-IDENTITY",
+      "TimeTicks"
+    ],
+    "SNMPv2-TC": [
+      "TEXTUAL-CONVENTION",
+      "DisplayString"
+    ]
+  },
+  "ripex": {
+    "name": "ripex",
+    "oid": "1.3.6.1.4.1.33555.2",
+    "class": "moduleidentity",
+    "revisions": [
+      {
+        "revision": "2017-03-06 00:00",
+        "description": "The latest MIB module version."
+      }
+    ],
+    "lastupdated": "201703060000Z",
+    "organization": "Racom s.r.o",
+    "contactinfo": "Racom s.r.o Mirova 1283 592 31 Nove Mesto na Morave Czech Republic Tel: +420 565 659 511 Fax: +420 565 659 512 E-mail: racom@racom.eu",
+    "description": "The MIB module defines RipEX management objects."
+  },
+  "DisplayString": {
+    "name": "DisplayString",
+    "class": "type",
+    "type": {
+      "type": "OCTET STRING",
+      "class": "type"
+    }
+  },
+  "SettingState": {
+    "name": "SettingState",
+    "class": "textualconvention",
+    "type": {
+      "type": "INTEGER",
+      "class": "type",
+      "constraints": {
+        "enumeration": {
+          "off": 0,
+          "on": 1
+        }
+      }
+    },
+    "status": "current",
+    "description": "Setting off(0)/on(1)."
+  },
+  "AlmState": {
+    "name": "AlmState",
+    "class": "textualconvention",
+    "type": {
+      "type": "INTEGER",
+      "class": "type",
+      "constraints": {
+        "enumeration": {
+          "unknown": -1,
+          "inactive": 0,
+          "active": 1
+        }
+      }
+    },
+    "status": "current",
+    "description": "Alarm unknown(-1)/inactive(0)/active(1)."
+  },
+  "FunctionLock": {
+    "name": "FunctionLock",
+    "class": "textualconvention",
+    "type": {
+      "type": "INTEGER",
+      "class": "type",
+      "constraints": {
+        "enumeration": {
+          "disabled": 0,
+          "enabled": 1
+        }
+      }
+    },
+    "status": "current",
+    "description": "Device disabled (0)/enabled (1) functions."
+  },
+  "IOState": {
+    "name": "IOState",
+    "class": "textualconvention",
+    "type": {
+      "type": "INTEGER",
+      "class": "type",
+      "constraints": {
+        "enumeration": {
+          "unknown": -1,
+          "off": 0,
+          "on": 1
+        }
+      }
+    },
+    "status": "current",
+    "description": "HW Input/Output state - unknown(-1)/off(0)/on(1)."
+  },
+  "RelayContactType": {
+    "name": "RelayContactType",
+    "class": "textualconvention",
+    "type": {
+      "type": "INTEGER",
+      "class": "type",
+      "constraints": {
+        "enumeration": {
+          "off": 0,
+          "normally-closed": 1,
+          "normally-open": 2
+        }
+      }
+    },
+    "status": "current",
+    "description": "Relay contact type off(0)/NC(1)/NO(2)."
+  },
+  "BackupPathsName": {
+    "name": "BackupPathsName",
+    "class": "type",
+    "type": {
+      "type": "DisplayString",
+      "class": "type",
+      "constraints": {
+        "size": [
+          {
+            "min": 0,
+            "max": 16
+          }
+        ]
+      }
+    }
+  },
+  "BackupPathsState": {
+    "name": "BackupPathsState",
+    "class": "textualconvention",
+    "type": {
+      "type": "INTEGER",
+      "class": "type",
+      "constraints": {
+        "enumeration": {
+          "unknown": 0,
+          "up": 1,
+          "down": 2
+        }
+      }
+    },
+    "status": "current",
+    "description": "Backup paths - Alternative path state type unknown(0)/up(1)/down(2)."
+  },
+  "racom": {
+    "name": "racom",
+    "oid": "1.3.6.1.4.1.33555",
+    "class": "objectidentity"
+  },
+  "station": {
+    "name": "station",
+    "oid": "1.3.6.1.4.1.33555.2.1",
+    "class": "objectidentity"
+  },
+  "interface": {
+    "name": "interface",
+    "oid": "1.3.6.1.4.1.33555.2.2",
+    "class": "objectidentity"
+  },
+  "statistics": {
+    "name": "statistics",
+    "oid": "1.3.6.1.4.1.33555.2.3",
+    "class": "objectidentity"
+  },
+  "watchedValues": {
+    "name": "watchedValues",
+    "oid": "1.3.6.1.4.1.33555.2.4",
+    "class": "objectidentity"
+  },
+  "alarms": {
+    "name": "alarms",
+    "oid": "1.3.6.1.4.1.33555.2.5",
+    "class": "objectidentity"
+  },
+  "backupPaths": {
+    "name": "backupPaths",
+    "oid": "1.3.6.1.4.1.33555.2.6",
+    "class": "objectidentity"
+  },
+  "ripextraps": {
+    "name": "ripextraps",
+    "oid": "1.3.6.1.4.1.33555.2.10",
+    "class": "objectidentity"
+  },
+  "device": {
+    "name": "device",
+    "oid": "1.3.6.1.4.1.33555.2.1.1",
+    "class": "objectidentity"
+  },
+  "stationName": {
+    "name": "stationName",
+    "oid": "1.3.6.1.4.1.33555.2.1.1.1",
+    "nodetype": "scalar",
+    "class": "objecttype",
+    "syntax": {
+      "type": "DisplayString",
+      "class": "type",
+      "constraints": {
+        "size": [
+          {
+            "min": 0,
+            "max": 64
+          }
+        ]
+      }
+    },
+    "maxaccess": "read-only",
+    "status": "current",
+    "description": "Station Name."
+  },
+  "deviceType": {
+    "name": "deviceType",
+    "oid": "1.3.6.1.4.1.33555.2.1.1.2",
+    "nodetype": "scalar",
+    "class": "objecttype",
+    "syntax": {
+      "type": "DisplayString",
+      "class": "type",
+      "constraints": {
+        "size": [
+          {
+            "min": 0,
+            "max": 32
+          }
+        ]
+      }
+    },
+    "maxaccess": "read-only",
+    "status": "current",
+    "description": "Device type."
+  },
+  "deviceCode": {
+    "name": "deviceCode",
+    "oid": "1.3.6.1.4.1.33555.2.1.1.3",
+    "nodetype": "scalar",
+    "class": "objecttype",
+    "syntax": {
+      "type": "DisplayString",
+      "class": "type",
+      "constraints": {
+        "size": [
+          {
+            "min": 0,
+            "max": 32
+          }
+        ]
+      }
+    },
+    "maxaccess": "read-only",
+    "status": "current",
+    "description": "Device code."
+  },
+  "serialNumber": {
+    "name": "serialNumber",
+    "oid": "1.3.6.1.4.1.33555.2.1.1.4",
+    "nodetype": "scalar",
+    "class": "objecttype",
+    "syntax": {
+      "type": "Unsigned32",
+      "class": "type"
+    },
+    "maxaccess": "read-only",
+    "status": "current",
+    "description": "Product serial number."
+  },
+  "deviceMode": {
+    "name": "deviceMode",
+    "oid": "1.3.6.1.4.1.33555.2.1.1.5",
+    "nodetype": "scalar",
+    "class": "objecttype",
+    "syntax": {
+      "type": "INTEGER",
+      "class": "type",
+      "constraints": {
+        "enumeration": {
+          "bridge": 1,
+          "router": 2
+        }
+      }
+    },
+    "maxaccess": "read-only",
+    "status": "current",
+    "description": "Station working mode."
+  },
+  "hwVersions": {
+    "name": "hwVersions",
+    "oid": "1.3.6.1.4.1.33555.2.1.1.6",
+    "class": "objectidentity"
+  },
+  "hwVerModem": {
+    "name": "hwVerModem",
+    "oid": "1.3.6.1.4.1.33555.2.1.1.6.1",
+    "nodetype": "scalar",
+    "class": "objecttype",
+    "syntax": {
+      "type": "DisplayString",
+      "class": "type",
+      "constraints": {
+        "size": [
+          {
+            "min": 0,
+            "max": 16
+          }
+        ]
+      }
+    },
+    "maxaccess": "read-only",
+    "status": "current",
+    "description": "Modem HW version."
+  },
+  "hwVerRadio": {
+    "name": "hwVerRadio",
+    "oid": "1.3.6.1.4.1.33555.2.1.1.6.2",
+    "nodetype": "scalar",
+    "class": "objecttype",
+    "syntax": {
+      "type": "DisplayString",
+      "class": "type",
+      "constraints": {
+        "size": [
+          {
+            "min": 0,
+            "max": 16
+          }
+        ]
+      }
+    },
+    "maxaccess": "read-only",
+    "status": "current",
+    "description": "Radio HW version."
+  },
+  "swVersions": {
+    "name": "swVersions",
+    "oid": "1.3.6.1.4.1.33555.2.1.1.7",
+    "class": "objectidentity"
+  },
+  "swVermodem": {
+    "name": "swVermodem",
+    "oid": "1.3.6.1.4.1.33555.2.1.1.7.1",
+    "nodetype": "scalar",
+    "class": "objecttype",
+    "syntax": {
+      "type": "DisplayString",
+      "class": "type",
+      "constraints": {
+        "size": [
+          {
+            "min": 0,
+            "max": 16
+          }
+        ]
+      }
+    },
+    "maxaccess": "read-only",
+    "status": "current",
+    "description": "Modem firmware version."
+  },
+  "swVerSDDR": {
+    "name": "swVerSDDR",
+    "oid": "1.3.6.1.4.1.33555.2.1.1.7.2",
+    "nodetype": "scalar",
+    "class": "objecttype",
+    "syntax": {
+      "type": "DisplayString",
+      "class": "type",
+      "constraints": {
+        "size": [
+          {
+            "min": 0,
+            "max": 16
+          }
+        ]
+      }
+    },
+    "maxaccess": "read-only",
+    "status": "current",
+    "description": "SDDR firmware version."
+  },
+  "swVerDriver": {
+    "name": "swVerDriver",
+    "oid": "1.3.6.1.4.1.33555.2.1.1.7.3",
+    "nodetype": "scalar",
+    "class": "objecttype",
+    "syntax": {
+      "type": "DisplayString",
+      "class": "type",
+      "constraints": {
+        "size": [
+          {
+            "min": 0,
+            "max": 16
+          }
+        ]
+      }
+    },
+    "maxaccess": "read-only",
+    "status": "current",
+    "description": "Driver firmware version."
+  },
+  "swVerBootloader": {
+    "name": "swVerBootloader",
+    "oid": "1.3.6.1.4.1.33555.2.1.1.7.4",
+    "nodetype": "scalar",
+    "class": "objecttype",
+    "syntax": {
+      "type": "DisplayString",
+      "class": "type",
+      "constraints": {
+        "size": [
+          {
+            "min": 0,
+            "max": 16
+          }
+        ]
+      }
+    },
+    "maxaccess": "read-only",
+    "status": "current",
+    "description": "Bootloader version."
+  },
+  "ifRadio": {
+    "name": "ifRadio",
+    "oid": "1.3.6.1.4.1.33555.2.2.1",
+    "class": "objectidentity"
+  },
+  "ifEth": {
+    "name": "ifEth",
+    "oid": "1.3.6.1.4.1.33555.2.2.2",
+    "class": "objectidentity"
+  },
+  "ifTcpMod": {
+    "name": "ifTcpMod",
+    "oid": "1.3.6.1.4.1.33555.2.2.3",
+    "class": "objectidentity"
+  },
+  "ifTermServ": {
+    "name": "ifTermServ",
+    "oid": "1.3.6.1.4.1.33555.2.2.4",
+    "class": "objectidentity"
+  },
+  "ifCom": {
+    "name": "ifCom",
+    "oid": "1.3.6.1.4.1.33555.2.2.5",
+    "class": "objectidentity"
+  },
+  "ifHwIO": {
+    "name": "ifHwIO",
+    "oid": "1.3.6.1.4.1.33555.2.2.21",
+    "class": "objectidentity"
+  },
+  "rRxFrequency": {
+    "name": "rRxFrequency",
+    "oid": "1.3.6.1.4.1.33555.2.2.1.1",
+    "nodetype": "scalar",
+    "class": "objecttype",
+    "syntax": {
+      "type": "Gauge32",
+      "class": "type"
+    },
+    "maxaccess": "read-only",
+    "status": "current",
+    "description": "Radio interface Rx frequency in Hz."
+  },
+  "rTxFrequency": {
+    "name": "rTxFrequency",
+    "oid": "1.3.6.1.4.1.33555.2.2.1.2",
+    "nodetype": "scalar",
+    "class": "objecttype",
+    "syntax": {
+      "type": "Gauge32",
+      "class": "type"
+    },
+    "maxaccess": "read-only",
+    "status": "current",
+    "description": "Radio interface Tx frequency in Hz."
+  },
+  "rRfPwr": {
+    "name": "rRfPwr",
+    "oid": "1.3.6.1.4.1.33555.2.2.1.3",
+    "nodetype": "scalar",
+    "class": "objecttype",
+    "syntax": {
+      "type": "INTEGER",
+      "class": "type",
+      "constraints": {
+        "enumeration": {
+          "mE-100mW": 0,
+          "mE-200mW": 1,
+          "mE-500mW": 2,
+          "mE-1W": 3,
+          "mE-2W": 4,
+          "mE-3W": 5,
+          "mE-4W": 6,
+          "mE-5W": 7,
+          "mE-10W": 8,
+          "mE-8W": 9,
+          "mL-200mW": 17,
+          "mL-500mW": 18,
+          "mL-1W": 19,
+          "mL-2W": 20
+        }
+      }
+    },
+    "maxaccess": "read-only",
+    "status": "current",
+    "description": "Radio interface RF Power."
+  },
+  "rEncryption": {
+    "name": "rEncryption",
+    "oid": "1.3.6.1.4.1.33555.2.2.1.4",
+    "nodetype": "scalar",
+    "class": "objecttype",
+    "syntax": {
+      "type": "INTEGER",
+      "class": "type",
+      "constraints": {
+        "enumeration": {
+          "off": 0,
+          "aes256": 1
+        }
+      }
+    },
+    "maxaccess": "read-only",
+    "status": "current",
+    "description": "Radio interface encryption method."
+  },
+  "rFEC": {
+    "name": "rFEC",
+    "oid": "1.3.6.1.4.1.33555.2.2.1.5",
+    "nodetype": "scalar",
+    "class": "objecttype",
+    "syntax": {
+      "type": "SettingState",
+      "class": "type"
+    },
+    "maxaccess": "read-only",
+    "status": "current",
+    "description": "Radio interface FEC state."
+  },
+  "eGateway": {
+    "name": "eGateway",
+    "oid": "1.3.6.1.4.1.33555.2.2.2.1",
+    "nodetype": "scalar",
+    "class": "objecttype",
+    "syntax": {
+      "type": "IpAddress",
+      "class": "type"
+    },
+    "maxaccess": "read-only",
+    "status": "current",
+    "description": "Ethernet interface gateway address."
+  },
+  "eDhcp": {
+    "name": "eDhcp",
+    "oid": "1.3.6.1.4.1.33555.2.2.2.2",
+    "nodetype": "scalar",
+    "class": "objecttype",
+    "syntax": {
+      "type": "INTEGER",
+      "class": "type",
+      "constraints": {
+        "enumeration": {
+          "off": 0,
+          "server": 1,
+          "client": 2
+        }
+      }
+    },
+    "maxaccess": "read-only",
+    "status": "current",
+    "description": "Ethernet interface DHCP mode."
+  },
+  "eShaping": {
+    "name": "eShaping",
+    "oid": "1.3.6.1.4.1.33555.2.2.2.3",
+    "nodetype": "scalar",
+    "class": "objecttype",
+    "syntax": {
+      "type": "SettingState",
+      "class": "type"
+    },
+    "maxaccess": "read-only",
+    "status": "current",
+    "description": "Ethernet interface shaping state."
+  },
+  "eBCastMCast": {
+    "name": "eBCastMCast",
+    "oid": "1.3.6.1.4.1.33555.2.2.2.4",
+    "nodetype": "scalar",
+    "class": "objecttype",
+    "syntax": {
+      "type": "SettingState",
+      "class": "type"
+    },
+    "maxaccess": "read-only",
+    "status": "current",
+    "description": "Ethernet interface broadcast and multicast state."
+  },
+  "eSpeed": {
+    "name": "eSpeed",
+    "oid": "1.3.6.1.4.1.33555.2.2.2.5",
+    "nodetype": "scalar",
+    "class": "objecttype",
+    "syntax": {
+      "type": "INTEGER",
+      "class": "type",
+      "constraints": {
+        "enumeration": {
+          "auto": 0,
+          "s-100baseTX-Full": 1,
+          "s-100baseTX-Half": 2,
+          "s-10baseT-Full": 3,
+          "s-10baseT-Half": 4
+        }
+      }
+    },
+    "maxaccess": "read-only",
+    "status": "current",
+    "description": "Ethernet interface bit rate and duplex settings."
+  },
+  "ifTmEnable": {
+    "name": "ifTmEnable",
+    "oid": "1.3.6.1.4.1.33555.2.2.3.1",
+    "nodetype": "scalar",
+    "class": "objecttype",
+    "syntax": {
+      "type": "SettingState",
+      "class": "type"
+    },
+    "maxaccess": "read-only",
+    "status": "current",
+    "description": "TCP Modbus state."
+  },
+  "ifTmPort": {
+    "name": "ifTmPort",
+    "oid": "1.3.6.1.4.1.33555.2.2.3.2",
+    "nodetype": "scalar",
+    "class": "objecttype",
+    "syntax": {
+      "type": "Integer32",
+      "class": "type"
+    },
+    "maxaccess": "read-only",
+    "status": "current",
+    "description": "TCP Modbus port."
+  },
+  "ifTmTimeout": {
+    "name": "ifTmTimeout",
+    "oid": "1.3.6.1.4.1.33555.2.2.3.3",
+    "nodetype": "scalar",
+    "class": "objecttype",
+    "syntax": {
+      "type": "Integer32",
+      "class": "type"
+    },
+    "maxaccess": "read-only",
+    "status": "current",
+    "description": "TCP Modbus socket timeout in seconds."
+  },
+  "ifTmBCast": {
+    "name": "ifTmBCast",
+    "oid": "1.3.6.1.4.1.33555.2.2.3.4",
+    "nodetype": "scalar",
+    "class": "objecttype",
+    "syntax": {
+      "type": "SettingState",
+      "class": "type"
+    },
+    "maxaccess": "read-only",
+    "status": "current",
+    "description": "TCP Modbus COM protocol broadcast accept."
+  },
+  "ifTmATM": {
+    "name": "ifTmATM",
+    "oid": "1.3.6.1.4.1.33555.2.2.3.5",
+    "nodetype": "scalar",
+    "class": "objecttype",
+    "syntax": {
+      "type": "INTEGER",
+      "class": "type",
+      "constraints": {
+        "enumeration": {
+          "mask": 0,
+          "table": 1
+        }
+      }
+    },
+    "maxaccess": "read-only",
+    "status": "current",
+    "description": "TCP Modbus COM protocol address translation mode."
+  },
+  "ifTsEnable": {
+    "name": "ifTsEnable",
+    "oid": "1.3.6.1.4.1.33555.2.2.4.1",
+    "nodetype": "scalar",
+    "class": "objecttype",
+    "syntax": {
+      "type": "SettingState",
+      "class": "type"
+    },
+    "maxaccess": "read-only",
+    "status": "current",
+    "description": "Terminal server state."
+  },
+  "ifTsNumber": {
+    "name": "ifTsNumber",
+    "oid": "1.3.6.1.4.1.33555.2.2.4.2",
+    "nodetype": "scalar",
+    "class": "objecttype",
+    "syntax": {
+      "type": "Integer32",
+      "class": "type"
+    },
+    "maxaccess": "read-only",
+    "status": "current",
+    "description": "Number of Terminal server interfaces."
+  },
+  "ifTsTable": {
+    "name": "ifTsTable",
+    "oid": "1.3.6.1.4.1.33555.2.2.4.3",
+    "nodetype": "table",
+    "class": "objecttype",
+    "maxaccess": "not-accessible",
+    "status": "current",
+    "description": "List of Terminal server interface entries."
+  },
+  "ifTsEntry": {
+    "name": "ifTsEntry",
+    "oid": "1.3.6.1.4.1.33555.2.2.4.3.1",
+    "nodetype": "row",
+    "class": "objecttype",
+    "maxaccess": "not-accessible",
+    "indices": [
+      {
+        "module": "RIPEX",
+        "object": "tsIndex",
+        "implied": 0
+      }
+    ],
+    "status": "current",
+    "description": "Terminal server interface entry."
+  },
+  "tsIndex": {
+    "name": "tsIndex",
+    "oid": "1.3.6.1.4.1.33555.2.2.4.3.1.1",
+    "nodetype": "column",
+    "class": "objecttype",
+    "syntax": {
+      "type": "Integer32",
+      "class": "type",
+      "constraints": {
+        "range": [
+          {
+            "min": 1,
+            "max": 16
+          }
+        ]
+      }
+    },
+    "maxaccess": "read-only",
+    "status": "current",
+    "description": "Unique index for each interface."
+  },
+  "tsEnable": {
+    "name": "tsEnable",
+    "oid": "1.3.6.1.4.1.33555.2.2.4.3.1.2",
+    "nodetype": "column",
+    "class": "objecttype",
+    "syntax": {
+      "type": "SettingState",
+      "class": "type"
+    },
+    "maxaccess": "read-only",
+    "status": "current",
+    "description": "Terminal server interface state."
+  },
+  "tsEthProtType": {
+    "name": "tsEthProtType",
+    "oid": "1.3.6.1.4.1.33555.2.2.4.3.1.3",
+    "nodetype": "column",
+    "class": "objecttype",
+    "syntax": {
+      "type": "INTEGER",
+      "class": "type",
+      "constraints": {
+        "enumeration": {
+          "tcp": 0,
+          "udp": 1
+        }
+      }
+    },
+    "maxaccess": "read-only",
+    "status": "current",
+    "description": "Terminal server Ethernet protocol type."
+  },
+  "tsEthProtTimeout": {
+    "name": "tsEthProtTimeout",
+    "oid": "1.3.6.1.4.1.33555.2.2.4.3.1.4",
+    "nodetype": "column",
+    "class": "objecttype",
+    "syntax": {
+      "type": "Integer32",
+      "class": "type"
+    },
+    "maxaccess": "read-only",
+    "status": "current",
+    "description": "Terminal server Ethernet protocol socket timeout in seconds."
+  },
+  "tsEthProtMyPort": {
+    "name": "tsEthProtMyPort",
+    "oid": "1.3.6.1.4.1.33555.2.2.4.3.1.5",
+    "nodetype": "column",
+    "class": "objecttype",
+    "syntax": {
+      "type": "Integer32",
+      "class": "type"
+    },
+    "maxaccess": "read-only",
+    "status": "current",
+    "description": "Terminal server Ethernet protocol socket TCP/UDP port."
+  },
+  "tsEthProtDestIP": {
+    "name": "tsEthProtDestIP",
+    "oid": "1.3.6.1.4.1.33555.2.2.4.3.1.6",
+    "nodetype": "column",
+    "class": "objecttype",
+    "syntax": {
+      "type": "IpAddress",
+      "class": "type"
+    },
+    "maxaccess": "read-only",
+    "status": "current",
+    "description": "Terminal server partner's IP address."
+  },
+  "tsEthProtDestPort": {
+    "name": "tsEthProtDestPort",
+    "oid": "1.3.6.1.4.1.33555.2.2.4.3.1.7",
+    "nodetype": "column",
+    "class": "objecttype",
+    "syntax": {
+      "type": "Integer32",
+      "class": "type"
+    },
+    "maxaccess": "read-only",
+    "status": "current",
+    "description": "Terminal server partner's destination TCP/UDP port."
+  },
+  "tsComProtType": {
+    "name": "tsComProtType",
+    "oid": "1.3.6.1.4.1.33555.2.2.4.3.1.8",
+    "nodetype": "column",
+    "class": "objecttype",
+    "syntax": {
+      "type": "INTEGER",
+      "class": "type",
+      "constraints": {
+        "enumeration": {
+          "none": 0,
+          "asyncLink": 3,
+          "modbus": 4,
+          "iec101-870-5-101": 5,
+          "dnp3": 6,
+          "uni": 7,
+          "comli": 8,
+          "df1": 9,
+          "profibus": 10,
+          "c24": 12,
+          "rp570": 13,
+          "cactus": 14,
+          "ittflygt": 15,
+          "slip": 18,
+          "siemens3964R": 19,
+          "pr2000": 20
+        }
+      }
+    },
+    "maxaccess": "read-only",
+    "status": "current",
+    "description": "Terminal server COM user protocol type."
+  },
+  "ifComNumber": {
+    "name": "ifComNumber",
+    "oid": "1.3.6.1.4.1.33555.2.2.5.1",
+    "nodetype": "scalar",
+    "class": "objecttype",
+    "syntax": {
+      "type": "Integer32",
+      "class": "type"
+    },
+    "maxaccess": "read-only",
+    "status": "current",
+    "description": "Number of COM interfaces."
+  },
+  "ifComTable": {
+    "name": "ifComTable",
+    "oid": "1.3.6.1.4.1.33555.2.2.5.2",
+    "nodetype": "table",
+    "class": "objecttype",
+    "maxaccess": "not-accessible",
+    "status": "current",
+    "description": "List of COM interface entries."
+  },
+  "ifComEntry": {
+    "name": "ifComEntry",
+    "oid": "1.3.6.1.4.1.33555.2.2.5.2.1",
+    "nodetype": "row",
+    "class": "objecttype",
+    "maxaccess": "not-accessible",
+    "indices": [
+      {
+        "module": "RIPEX",
+        "object": "comIndex",
+        "implied": 0
+      }
+    ],
+    "status": "current",
+    "description": "COM interface entry."
+  },
+  "comIndex": {
+    "name": "comIndex",
+    "oid": "1.3.6.1.4.1.33555.2.2.5.2.1.1",
+    "nodetype": "column",
+    "class": "objecttype",
+    "syntax": {
+      "type": "Integer32",
+      "class": "type",
+      "constraints": {
+        "range": [
+          {
+            "min": 1,
+            "max": 8
+          }
+        ]
+      }
+    },
+    "maxaccess": "read-only",
+    "status": "current",
+    "description": "Unique index for each interface."
+  },
+  "comIdle": {
+    "name": "comIdle",
+    "oid": "1.3.6.1.4.1.33555.2.2.5.2.1.2",
+    "nodetype": "column",
+    "class": "objecttype",
+    "syntax": {
+      "type": "Integer32",
+      "class": "type"
+    },
+    "maxaccess": "read-only",
+    "status": "current",
+    "description": "COM interface idle in bytes."
+  },
+  "comMtu": {
+    "name": "comMtu",
+    "oid": "1.3.6.1.4.1.33555.2.2.5.2.1.3",
+    "nodetype": "column",
+    "class": "objecttype",
+    "syntax": {
+      "type": "Integer32",
+      "class": "type"
+    },
+    "maxaccess": "read-only",
+    "status": "current",
+    "description": "COM interface MTU in bytes."
+  },
+  "comProtocol": {
+    "name": "comProtocol",
+    "oid": "1.3.6.1.4.1.33555.2.2.5.2.1.4",
+    "nodetype": "column",
+    "class": "objecttype",
+    "syntax": {
+      "type": "INTEGER",
+      "class": "type",
+      "constraints": {
+        "enumeration": {
+          "none": 0,
+          "asyncLink": 3,
+          "modbus": 4,
+          "iec101-870-5-101": 5,
+          "dnp3": 6,
+          "uni": 7,
+          "comli": 8,
+          "df1": 9,
+          "profibus": 10,
+          "c24": 12,
+          "rp570": 13,
+          "cactus": 14,
+          "ittflygt": 15,
+          "slip": 18,
+          "siemens3964R": 19,
+          "pr2000": 20
+        }
+      }
+    },
+    "maxaccess": "read-only",
+    "status": "current",
+    "description": "COM interface protocol."
+  },
+  "ifHwAInputType": {
+    "name": "ifHwAInputType",
+    "oid": "1.3.6.1.4.1.33555.2.2.21.1",
+    "nodetype": "scalar",
+    "class": "objecttype",
+    "syntax": {
+      "type": "RelayContactType",
+      "class": "type"
+    },
+    "maxaccess": "read-only",
+    "status": "current",
+    "description": "HW alarm input contact type."
+  },
+  "ifHwAInputState": {
+    "name": "ifHwAInputState",
+    "oid": "1.3.6.1.4.1.33555.2.2.21.2",
+    "nodetype": "scalar",
+    "class": "objecttype",
+    "syntax": {
+      "type": "IOState",
+      "class": "type"
+    },
+    "maxaccess": "read-only",
+    "status": "current",
+    "description": "HW alarm input contact state."
+  },
+  "stRadio": {
+    "name": "stRadio",
+    "oid": "1.3.6.1.4.1.33555.2.3.1",
+    "class": "objectidentity"
+  },
+  "stTcpMod": {
+    "name": "stTcpMod",
+    "oid": "1.3.6.1.4.1.33555.2.3.2",
+    "class": "objectidentity"
+  },
+  "stTermServ": {
+    "name": "stTermServ",
+    "oid": "1.3.6.1.4.1.33555.2.3.3",
+    "class": "objectidentity"
+  },
+  "stCom": {
+    "name": "stCom",
+    "oid": "1.3.6.1.4.1.33555.2.3.4",
+    "class": "objectidentity"
+  },
+  "stTcpProxy": {
+    "name": "stTcpProxy",
+    "oid": "1.3.6.1.4.1.33555.2.3.5",
+    "class": "objectidentity"
+  },
+  "stRadioTotal": {
+    "name": "stRadioTotal",
+    "oid": "1.3.6.1.4.1.33555.2.3.1.1",
+    "class": "objectidentity"
+  },
+  "stRadioTotDuplicates": {
+    "name": "stRadioTotDuplicates",
+    "oid": "1.3.6.1.4.1.33555.2.3.1.1.1",
+    "nodetype": "scalar",
+    "class": "objecttype",
+    "syntax": {
+      "type": "Counter32",
+      "class": "type"
+    },
+    "maxaccess": "read-only",
+    "status": "current",
+    "description": "Total radio duplicate packets counter."
+  },
+  "stRadioTotRepeats": {
+    "name": "stRadioTotRepeats",
+    "oid": "1.3.6.1.4.1.33555.2.3.1.1.2",
+    "nodetype": "scalar",
+    "class": "objecttype",
+    "syntax": {
+      "type": "Counter32",
+      "class": "type"
+    },
+    "maxaccess": "read-only",
+    "status": "current",
+    "description": "Total radio repeated packets counter."
+  },
+  "stRadioTotLost": {
+    "name": "stRadioTotLost",
+    "oid": "1.3.6.1.4.1.33555.2.3.1.1.3",
+    "nodetype": "scalar",
+    "class": "objecttype",
+    "syntax": {
+      "type": "Counter32",
+      "class": "type"
+    },
+    "maxaccess": "read-only",
+    "status": "current",
+    "description": "Total radio lost packets counter."
+  },
+  "stRadioTotCtlPacketsRx": {
+    "name": "stRadioTotCtlPacketsRx",
+    "oid": "1.3.6.1.4.1.33555.2.3.1.1.4",
+    "nodetype": "scalar",
+    "class": "objecttype",
+    "syntax": {
+      "type": "Counter32",
+      "class": "type"
+    },
+    "maxaccess": "read-only",
+    "status": "current",
+    "description": "Total Rx radio control packets counter."
+  },
+  "stRadioTotCtlPacketsTx": {
+    "name": "stRadioTotCtlPacketsTx",
+    "oid": "1.3.6.1.4.1.33555.2.3.1.1.5",
+    "nodetype": "scalar",
+    "class": "objecttype",
+    "syntax": {
+      "type": "Counter32",
+      "class": "type"
+    },
+    "maxaccess": "read-only",
+    "status": "current",
+    "description": "Total Tx radio control packets counter."
+  },
+  "stRadioTotDataErr": {
+    "name": "stRadioTotDataErr",
+    "oid": "1.3.6.1.4.1.33555.2.3.1.1.6",
+    "nodetype": "scalar",
+    "class": "objecttype",
+    "syntax": {
+      "type": "Counter32",
+      "class": "type"
+    },
+    "maxaccess": "read-only",
+    "status": "current",
+    "description": "Total radio data error packets counter."
+  },
+  "stRadioTotRejected": {
+    "name": "stRadioTotRejected",
+    "oid": "1.3.6.1.4.1.33555.2.3.1.1.7",
+    "nodetype": "scalar",
+    "class": "objecttype",
+    "syntax": {
+      "type": "Counter32",
+      "class": "type"
+    },
+    "maxaccess": "read-only",
+    "status": "current",
+    "description": "Total radio rejected packets counter."
+  },
+  "stRadioTotPacketsRx": {
+    "name": "stRadioTotPacketsRx",
+    "oid": "1.3.6.1.4.1.33555.2.3.1.1.8",
+    "nodetype": "scalar",
+    "class": "objecttype",
+    "syntax": {
+      "type": "Counter32",
+      "class": "type"
+    },
+    "maxaccess": "read-only",
+    "status": "current",
+    "description": "Remote station total Rx packets counter."
+  },
+  "stRadioTotPacketsTx": {
+    "name": "stRadioTotPacketsTx",
+    "oid": "1.3.6.1.4.1.33555.2.3.1.1.9",
+    "nodetype": "scalar",
+    "class": "objecttype",
+    "syntax": {
+      "type": "Counter32",
+      "class": "type"
+    },
+    "maxaccess": "read-only",
+    "status": "current",
+    "description": "Remote station total Tx packets counter."
+  },
+  "stRadioTotBytesRx": {
+    "name": "stRadioTotBytesRx",
+    "oid": "1.3.6.1.4.1.33555.2.3.1.1.10",
+    "nodetype": "scalar",
+    "class": "objecttype",
+    "syntax": {
+      "type": "Counter32",
+      "class": "type"
+    },
+    "maxaccess": "read-only",
+    "status": "current",
+    "description": "Remote station total Rx bytes counter."
+  },
+  "stRadioTotBytesTx": {
+    "name": "stRadioTotBytesTx",
+    "oid": "1.3.6.1.4.1.33555.2.3.1.1.11",
+    "nodetype": "scalar",
+    "class": "objecttype",
+    "syntax": {
+      "type": "Counter32",
+      "class": "type"
+    },
+    "maxaccess": "read-only",
+    "status": "current",
+    "description": "Remote station total Tx bytes counter."
+  },
+  "stRadioTotIpErr": {
+    "name": "stRadioTotIpErr",
+    "oid": "1.3.6.1.4.1.33555.2.3.1.1.12",
+    "nodetype": "scalar",
+    "class": "objecttype",
+    "syntax": {
+      "type": "Counter32",
+      "class": "type"
+    },
+    "maxaccess": "read-only",
+    "status": "current",
+    "description": "Total radio IP error packets counter."
+  },
+  "stRadioTotSubHeadErr": {
+    "name": "stRadioTotSubHeadErr",
+    "oid": "1.3.6.1.4.1.33555.2.3.1.1.13",
+    "nodetype": "scalar",
+    "class": "objecttype",
+    "syntax": {
+      "type": "Counter32",
+      "class": "type"
+    },
+    "maxaccess": "read-only",
+    "status": "current",
+    "description": "Total radio subheader error packets counter."
+  },
+  "stRadioTotHeadErr": {
+    "name": "stRadioTotHeadErr",
+    "oid": "1.3.6.1.4.1.33555.2.3.1.1.14",
+    "nodetype": "scalar",
+    "class": "objecttype",
+    "syntax": {
+      "type": "Counter32",
+      "class": "type"
+    },
+    "maxaccess": "read-only",
+    "status": "current",
+    "description": "Total radio header error packets counter."
+  },
+  "stRadioTotFalseSync": {
+    "name": "stRadioTotFalseSync",
+    "oid": "1.3.6.1.4.1.33555.2.3.1.1.15",
+    "nodetype": "scalar",
+    "class": "objecttype",
+    "syntax": {
+      "type": "Counter32",
+      "class": "type"
+    },
+    "maxaccess": "read-only",
+    "status": "current",
+    "description": "Total radio false sync counter."
+  },
+  "stRadioRemNumber": {
+    "name": "stRadioRemNumber",
+    "oid": "1.3.6.1.4.1.33555.2.3.1.2",
+    "nodetype": "scalar",
+    "class": "objecttype",
+    "syntax": {
+      "type": "Integer32",
+      "class": "type"
+    },
+    "maxaccess": "read-only",
+    "status": "current",
+    "description": "Number of remote stations."
+  },
+  "stRadioRemTable": {
+    "name": "stRadioRemTable",
+    "oid": "1.3.6.1.4.1.33555.2.3.1.3",
+    "nodetype": "table",
+    "class": "objecttype",
+    "maxaccess": "not-accessible",
+    "status": "current",
+    "description": "List of remote station entries."
+  },
+  "stRadioRemEntry": {
+    "name": "stRadioRemEntry",
+    "oid": "1.3.6.1.4.1.33555.2.3.1.3.1",
+    "nodetype": "row",
+    "class": "objecttype",
+    "maxaccess": "not-accessible",
+    "indices": [
+      {
+        "module": "RIPEX",
+        "object": "stRemIndex",
+        "implied": 0
+      }
+    ],
+    "status": "current",
+    "description": "Radio remote station entry."
+  },
+  "stRemIndex": {
+    "name": "stRemIndex",
+    "oid": "1.3.6.1.4.1.33555.2.3.1.3.1.1",
+    "nodetype": "column",
+    "class": "objecttype",
+    "syntax": {
+      "type": "Integer32",
+      "class": "type",
+      "constraints": {
+        "range": [
+          {
+            "min": 1,
+            "max": 256
+          }
+        ]
+      }
+    },
+    "maxaccess": "read-only",
+    "status": "current",
+    "description": "Remote station index."
+  },
+  "stRemIpAddr": {
+    "name": "stRemIpAddr",
+    "oid": "1.3.6.1.4.1.33555.2.3.1.3.1.2",
+    "nodetype": "column",
+    "class": "objecttype",
+    "syntax": {
+      "type": "OCTET STRING",
+      "class": "type"
+    },
+    "maxaccess": "read-only",
+    "status": "current",
+    "description": "Remote station IP address."
+  },
+  "stRemPacketsRx": {
+    "name": "stRemPacketsRx",
+    "oid": "1.3.6.1.4.1.33555.2.3.1.3.1.3",
+    "nodetype": "column",
+    "class": "objecttype",
+    "syntax": {
+      "type": "Counter32",
+      "class": "type"
+    },
+    "maxaccess": "read-only",
+    "status": "current",
+    "description": "Remote station Rx packets counter."
+  },
+  "stRemPacketsTx": {
+    "name": "stRemPacketsTx",
+    "oid": "1.3.6.1.4.1.33555.2.3.1.3.1.4",
+    "nodetype": "column",
+    "class": "objecttype",
+    "syntax": {
+      "type": "Counter32",
+      "class": "type"
+    },
+    "maxaccess": "read-only",
+    "status": "current",
+    "description": "Remote station Tx packets counter."
+  },
+  "stRemBytesRx": {
+    "name": "stRemBytesRx",
+    "oid": "1.3.6.1.4.1.33555.2.3.1.3.1.5",
+    "nodetype": "column",
+    "class": "objecttype",
+    "syntax": {
+      "type": "Counter32",
+      "class": "type"
+    },
+    "maxaccess": "read-only",
+    "status": "current",
+    "description": "Remote station Rx bytes counter."
+  },
+  "stRemBytesTx": {
+    "name": "stRemBytesTx",
+    "oid": "1.3.6.1.4.1.33555.2.3.1.3.1.6",
+    "nodetype": "column",
+    "class": "objecttype",
+    "syntax": {
+      "type": "Counter32",
+      "class": "type"
+    },
+    "maxaccess": "read-only",
+    "status": "current",
+    "description": "Remote station Tx bytes counter."
+  },
+  "stRemDuplicates": {
+    "name": "stRemDuplicates",
+    "oid": "1.3.6.1.4.1.33555.2.3.1.3.1.7",
+    "nodetype": "column",
+    "class": "objecttype",
+    "syntax": {
+      "type": "Counter32",
+      "class": "type"
+    },
+    "maxaccess": "read-only",
+    "status": "current",
+    "description": "Remote station duplicate packets counter."
+  },
+  "stRemRepeats": {
+    "name": "stRemRepeats",
+    "oid": "1.3.6.1.4.1.33555.2.3.1.3.1.8",
+    "nodetype": "column",
+    "class": "objecttype",
+    "syntax": {
+      "type": "Counter32",
+      "class": "type"
+    },
+    "maxaccess": "read-only",
+    "status": "current",
+    "description": "Remote station repeated packets counter."
+  },
+  "stRemLost": {
+    "name": "stRemLost",
+    "oid": "1.3.6.1.4.1.33555.2.3.1.3.1.9",
+    "nodetype": "column",
+    "class": "objecttype",
+    "syntax": {
+      "type": "Counter32",
+      "class": "type"
+    },
+    "maxaccess": "read-only",
+    "status": "current",
+    "description": "Remote station lost packets counter."
+  },
+  "stRemCtlPacketsRx": {
+    "name": "stRemCtlPacketsRx",
+    "oid": "1.3.6.1.4.1.33555.2.3.1.3.1.10",
+    "nodetype": "column",
+    "class": "objecttype",
+    "syntax": {
+      "type": "Counter32",
+      "class": "type"
+    },
+    "maxaccess": "read-only",
+    "status": "current",
+    "description": "Remote station Rx radio control packets counter."
+  },
+  "stRemCtlPacketsTx": {
+    "name": "stRemCtlPacketsTx",
+    "oid": "1.3.6.1.4.1.33555.2.3.1.3.1.11",
+    "nodetype": "column",
+    "class": "objecttype",
+    "syntax": {
+      "type": "Counter32",
+      "class": "type"
+    },
+    "maxaccess": "read-only",
+    "status": "current",
+    "description": "Remote station Tx radio control packets counter."
+  },
+  "stRemDataErr": {
+    "name": "stRemDataErr",
+    "oid": "1.3.6.1.4.1.33555.2.3.1.3.1.12",
+    "nodetype": "column",
+    "class": "objecttype",
+    "syntax": {
+      "type": "Counter32",
+      "class": "type"
+    },
+    "maxaccess": "read-only",
+    "status": "current",
+    "description": "Remote station data error packets counter."
+  },
+  "stRemRejected": {
+    "name": "stRemRejected",
+    "oid": "1.3.6.1.4.1.33555.2.3.1.3.1.13",
+    "nodetype": "column",
+    "class": "objecttype",
+    "syntax": {
+      "type": "Counter32",
+      "class": "type"
+    },
+    "maxaccess": "read-only",
+    "status": "current",
+    "description": "Remote station rejected packets counter."
+  },
+  "stRemTotalPacketsRx": {
+    "name": "stRemTotalPacketsRx",
+    "oid": "1.3.6.1.4.1.33555.2.3.1.3.1.14",
+    "nodetype": "column",
+    "class": "objecttype",
+    "syntax": {
+      "type": "Counter32",
+      "class": "type"
+    },
+    "maxaccess": "read-only",
+    "status": "current",
+    "description": "Remote station total Rx packets counter."
+  },
+  "stRemTotalPacketsTx": {
+    "name": "stRemTotalPacketsTx",
+    "oid": "1.3.6.1.4.1.33555.2.3.1.3.1.15",
+    "nodetype": "column",
+    "class": "objecttype",
+    "syntax": {
+      "type": "Counter32",
+      "class": "type"
+    },
+    "maxaccess": "read-only",
+    "status": "current",
+    "description": "Remote station total Tx packets counter."
+  },
+  "stRemTotalBytesRx": {
+    "name": "stRemTotalBytesRx",
+    "oid": "1.3.6.1.4.1.33555.2.3.1.3.1.16",
+    "nodetype": "column",
+    "class": "objecttype",
+    "syntax": {
+      "type": "Counter32",
+      "class": "type"
+    },
+    "maxaccess": "read-only",
+    "status": "current",
+    "description": "Remote station total Rx bytes counter."
+  },
+  "stRemTotalBytesTx": {
+    "name": "stRemTotalBytesTx",
+    "oid": "1.3.6.1.4.1.33555.2.3.1.3.1.17",
+    "nodetype": "column",
+    "class": "objecttype",
+    "syntax": {
+      "type": "Counter32",
+      "class": "type"
+    },
+    "maxaccess": "read-only",
+    "status": "current",
+    "description": "Remote station total Tx bytes counter."
+  },
+  "stTcpModNumber": {
+    "name": "stTcpModNumber",
+    "oid": "1.3.6.1.4.1.33555.2.3.2.1",
+    "nodetype": "scalar",
+    "class": "objecttype",
+    "syntax": {
+      "type": "Integer32",
+      "class": "type"
+    },
+    "maxaccess": "read-only",
+    "status": "current",
+    "description": "Number of TCP Modbus ports."
+  },
+  "stTcpModTable": {
+    "name": "stTcpModTable",
+    "oid": "1.3.6.1.4.1.33555.2.3.2.2",
+    "nodetype": "table",
+    "class": "objecttype",
+    "maxaccess": "not-accessible",
+    "status": "current",
+    "description": "List of TCP Modbus port entries."
+  },
+  "stTcpModEntry": {
+    "name": "stTcpModEntry",
+    "oid": "1.3.6.1.4.1.33555.2.3.2.2.1",
+    "nodetype": "row",
+    "class": "objecttype",
+    "maxaccess": "not-accessible",
+    "indices": [
+      {
+        "module": "RIPEX",
+        "object": "stTcpModIndex",
+        "implied": 0
+      }
+    ],
+    "status": "current",
+    "description": "TCP Modbus port entry."
+  },
+  "stTcpModIndex": {
+    "name": "stTcpModIndex",
+    "oid": "1.3.6.1.4.1.33555.2.3.2.2.1.1",
+    "nodetype": "column",
+    "class": "objecttype",
+    "syntax": {
+      "type": "Integer32",
+      "class": "type",
+      "constraints": {
+        "range": [
+          {
+            "min": 1,
+            "max": 8
+          }
+        ]
+      }
+    },
+    "maxaccess": "read-only",
+    "status": "current",
+    "description": "TCP Modbus port index."
+  },
+  "stTcpModPacketsRx": {
+    "name": "stTcpModPacketsRx",
+    "oid": "1.3.6.1.4.1.33555.2.3.2.2.1.2",
+    "nodetype": "column",
+    "class": "objecttype",
+    "syntax": {
+      "type": "Counter32",
+      "class": "type"
+    },
+    "maxaccess": "read-only",
+    "status": "current",
+    "description": "TCP Modbus Rx packets counter."
+  },
+  "stTcpModPacketsTx": {
+    "name": "stTcpModPacketsTx",
+    "oid": "1.3.6.1.4.1.33555.2.3.2.2.1.3",
+    "nodetype": "column",
+    "class": "objecttype",
+    "syntax": {
+      "type": "Counter32",
+      "class": "type"
+    },
+    "maxaccess": "read-only",
+    "status": "current",
+    "description": "TCP Modbus Tx packets counter."
+  },
+  "stTcpModBytesRx": {
+    "name": "stTcpModBytesRx",
+    "oid": "1.3.6.1.4.1.33555.2.3.2.2.1.4",
+    "nodetype": "column",
+    "class": "objecttype",
+    "syntax": {
+      "type": "Counter32",
+      "class": "type"
+    },
+    "maxaccess": "read-only",
+    "status": "current",
+    "description": "TCP Modbus Rx bytes counter."
+  },
+  "stTcpModBytesTx": {
+    "name": "stTcpModBytesTx",
+    "oid": "1.3.6.1.4.1.33555.2.3.2.2.1.5",
+    "nodetype": "column",
+    "class": "objecttype",
+    "syntax": {
+      "type": "Counter32",
+      "class": "type"
+    },
+    "maxaccess": "read-only",
+    "status": "current",
+    "description": "TCP Modbus Tx bytes counter."
+  },
+  "stTermServNumber": {
+    "name": "stTermServNumber",
+    "oid": "1.3.6.1.4.1.33555.2.3.3.1",
+    "nodetype": "scalar",
+    "class": "objecttype",
+    "syntax": {
+      "type": "Integer32",
+      "class": "type"
+    },
+    "maxaccess": "read-only",
+    "status": "current",
+    "description": "Number of Terminal Server ports."
+  },
+  "stTermServTable": {
+    "name": "stTermServTable",
+    "oid": "1.3.6.1.4.1.33555.2.3.3.2",
+    "nodetype": "table",
+    "class": "objecttype",
+    "maxaccess": "not-accessible",
+    "status": "current",
+    "description": "List of Terminal Server port entries."
+  },
+  "stTermServEntry": {
+    "name": "stTermServEntry",
+    "oid": "1.3.6.1.4.1.33555.2.3.3.2.1",
+    "nodetype": "row",
+    "class": "objecttype",
+    "maxaccess": "not-accessible",
+    "indices": [
+      {
+        "module": "RIPEX",
+        "object": "stTermServIndex",
+        "implied": 0
+      }
+    ],
+    "status": "current",
+    "description": "Terminal Server port entry."
+  },
+  "stTermServIndex": {
+    "name": "stTermServIndex",
+    "oid": "1.3.6.1.4.1.33555.2.3.3.2.1.1",
+    "nodetype": "column",
+    "class": "objecttype",
+    "syntax": {
+      "type": "Integer32",
+      "class": "type",
+      "constraints": {
+        "range": [
+          {
+            "min": 1,
+            "max": 16
+          }
+        ]
+      }
+    },
+    "maxaccess": "read-only",
+    "status": "current",
+    "description": "Terminal Server port index."
+  },
+  "stTermServPacketsRx": {
+    "name": "stTermServPacketsRx",
+    "oid": "1.3.6.1.4.1.33555.2.3.3.2.1.2",
+    "nodetype": "column",
+    "class": "objecttype",
+    "syntax": {
+      "type": "Counter32",
+      "class": "type"
+    },
+    "maxaccess": "read-only",
+    "status": "current",
+    "description": "Terminal Server Rx packets counter."
+  },
+  "stTermServPacketsTx": {
+    "name": "stTermServPacketsTx",
+    "oid": "1.3.6.1.4.1.33555.2.3.3.2.1.3",
+    "nodetype": "column",
+    "class": "objecttype",
+    "syntax": {
+      "type": "Counter32",
+      "class": "type"
+    },
+    "maxaccess": "read-only",
+    "status": "current",
+    "description": "Terminal Server Tx packets counter."
+  },
+  "stTermServBytesRx": {
+    "name": "stTermServBytesRx",
+    "oid": "1.3.6.1.4.1.33555.2.3.3.2.1.4",
+    "nodetype": "column",
+    "class": "objecttype",
+    "syntax": {
+      "type": "Counter32",
+      "class": "type"
+    },
+    "maxaccess": "read-only",
+    "status": "current",
+    "description": "Terminal Server Rx bytes counter."
+  },
+  "stTermServBytesTx": {
+    "name": "stTermServBytesTx",
+    "oid": "1.3.6.1.4.1.33555.2.3.3.2.1.5",
+    "nodetype": "column",
+    "class": "objecttype",
+    "syntax": {
+      "type": "Counter32",
+      "class": "type"
+    },
+    "maxaccess": "read-only",
+    "status": "current",
+    "description": "Terminal Server Tx bytes counter."
+  },
+  "stComNumber": {
+    "name": "stComNumber",
+    "oid": "1.3.6.1.4.1.33555.2.3.4.1",
+    "nodetype": "scalar",
+    "class": "objecttype",
+    "syntax": {
+      "type": "Integer32",
+      "class": "type"
+    },
+    "maxaccess": "read-only",
+    "status": "current",
+    "description": "Number of COM ports."
+  },
+  "stComTable": {
+    "name": "stComTable",
+    "oid": "1.3.6.1.4.1.33555.2.3.4.2",
+    "nodetype": "table",
+    "class": "objecttype",
+    "maxaccess": "not-accessible",
+    "status": "current",
+    "description": "List of COM port entries."
+  },
+  "stComEntry": {
+    "name": "stComEntry",
+    "oid": "1.3.6.1.4.1.33555.2.3.4.2.1",
+    "nodetype": "row",
+    "class": "objecttype",
+    "maxaccess": "not-accessible",
+    "indices": [
+      {
+        "module": "RIPEX",
+        "object": "stComIndex",
+        "implied": 0
+      }
+    ],
+    "status": "current",
+    "description": "COM port entry."
+  },
+  "stComIndex": {
+    "name": "stComIndex",
+    "oid": "1.3.6.1.4.1.33555.2.3.4.2.1.1",
+    "nodetype": "column",
+    "class": "objecttype",
+    "syntax": {
+      "type": "Integer32",
+      "class": "type",
+      "constraints": {
+        "range": [
+          {
+            "min": 1,
+            "max": 8
+          }
+        ]
+      }
+    },
+    "maxaccess": "read-only",
+    "status": "current",
+    "description": "COM port index."
+  },
+  "stComPacketsRx": {
+    "name": "stComPacketsRx",
+    "oid": "1.3.6.1.4.1.33555.2.3.4.2.1.2",
+    "nodetype": "column",
+    "class": "objecttype",
+    "syntax": {
+      "type": "Counter32",
+      "class": "type"
+    },
+    "maxaccess": "read-only",
+    "status": "current",
+    "description": "COM Rx packets counter."
+  },
+  "stComPacketsTx": {
+    "name": "stComPacketsTx",
+    "oid": "1.3.6.1.4.1.33555.2.3.4.2.1.3",
+    "nodetype": "column",
+    "class": "objecttype",
+    "syntax": {
+      "type": "Counter32",
+      "class": "type"
+    },
+    "maxaccess": "read-only",
+    "status": "current",
+    "description": "COM Tx packets counter."
+  },
+  "stComBytesRx": {
+    "name": "stComBytesRx",
+    "oid": "1.3.6.1.4.1.33555.2.3.4.2.1.4",
+    "nodetype": "column",
+    "class": "objecttype",
+    "syntax": {
+      "type": "Counter32",
+      "class": "type"
+    },
+    "maxaccess": "read-only",
+    "status": "current",
+    "description": "COM Rx bytes counter."
+  },
+  "stComBytesTx": {
+    "name": "stComBytesTx",
+    "oid": "1.3.6.1.4.1.33555.2.3.4.2.1.5",
+    "nodetype": "column",
+    "class": "objecttype",
+    "syntax": {
+      "type": "Counter32",
+      "class": "type"
+    },
+    "maxaccess": "read-only",
+    "status": "current",
+    "description": "COM Tx bytes counter."
+  },
+  "stTcpProxyNumber": {
+    "name": "stTcpProxyNumber",
+    "oid": "1.3.6.1.4.1.33555.2.3.5.1",
+    "nodetype": "scalar",
+    "class": "objecttype",
+    "syntax": {
+      "type": "Integer32",
+      "class": "type"
+    },
+    "maxaccess": "read-only",
+    "status": "current",
+    "description": "Number of TCP proxy ports."
+  },
+  "stTcpProxyTable": {
+    "name": "stTcpProxyTable",
+    "oid": "1.3.6.1.4.1.33555.2.3.5.2",
+    "nodetype": "table",
+    "class": "objecttype",
+    "maxaccess": "not-accessible",
+    "status": "current",
+    "description": "List of TCP proxy port entries."
+  },
+  "stTcpProxyEntry": {
+    "name": "stTcpProxyEntry",
+    "oid": "1.3.6.1.4.1.33555.2.3.5.2.1",
+    "nodetype": "row",
+    "class": "objecttype",
+    "maxaccess": "not-accessible",
+    "indices": [
+      {
+        "module": "RIPEX",
+        "object": "stTcpProxyIndex",
+        "implied": 0
+      }
+    ],
+    "status": "current",
+    "description": "TCP proxy port entry."
+  },
+  "stTcpProxyIndex": {
+    "name": "stTcpProxyIndex",
+    "oid": "1.3.6.1.4.1.33555.2.3.5.2.1.1",
+    "nodetype": "column",
+    "class": "objecttype",
+    "syntax": {
+      "type": "Integer32",
+      "class": "type",
+      "constraints": {
+        "range": [
+          {
+            "min": 1,
+            "max": 8
+          }
+        ]
+      }
+    },
+    "maxaccess": "read-only",
+    "status": "current",
+    "description": "TCP proxy port index."
+  },
+  "stTcpProxyPacketsRx": {
+    "name": "stTcpProxyPacketsRx",
+    "oid": "1.3.6.1.4.1.33555.2.3.5.2.1.2",
+    "nodetype": "column",
+    "class": "objecttype",
+    "syntax": {
+      "type": "Counter32",
+      "class": "type"
+    },
+    "maxaccess": "read-only",
+    "status": "current",
+    "description": "TCP proxy Rx packets counter."
+  },
+  "stTcpProxyPacketsTx": {
+    "name": "stTcpProxyPacketsTx",
+    "oid": "1.3.6.1.4.1.33555.2.3.5.2.1.3",
+    "nodetype": "column",
+    "class": "objecttype",
+    "syntax": {
+      "type": "Counter32",
+      "class": "type"
+    },
+    "maxaccess": "read-only",
+    "status": "current",
+    "description": "TCP proxy Tx packets counter."
+  },
+  "stTcpProxyBytesRx": {
+    "name": "stTcpProxyBytesRx",
+    "oid": "1.3.6.1.4.1.33555.2.3.5.2.1.4",
+    "nodetype": "column",
+    "class": "objecttype",
+    "syntax": {
+      "type": "Counter32",
+      "class": "type"
+    },
+    "maxaccess": "read-only",
+    "status": "current",
+    "description": "TCP proxy Rx bytes counter."
+  },
+  "stTcpProxyBytesTx": {
+    "name": "stTcpProxyBytesTx",
+    "oid": "1.3.6.1.4.1.33555.2.3.5.2.1.5",
+    "nodetype": "column",
+    "class": "objecttype",
+    "syntax": {
+      "type": "Counter32",
+      "class": "type"
+    },
+    "maxaccess": "read-only",
+    "status": "current",
+    "description": "TCP proxy Tx bytes counter."
+  },
+  "wvLocal": {
+    "name": "wvLocal",
+    "oid": "1.3.6.1.4.1.33555.2.4.1",
+    "class": "objectidentity"
+  },
+  "wvTxLostLast": {
+    "name": "wvTxLostLast",
+    "oid": "1.3.6.1.4.1.33555.2.4.1.5",
+    "nodetype": "scalar",
+    "class": "objecttype",
+    "syntax": {
+      "type": "Integer32",
+      "class": "type"
+    },
+    "maxaccess": "read-only",
+    "status": "current",
+    "description": "Local station - Last Tx lost value in %."
+  },
+  "wvTxLostAvg": {
+    "name": "wvTxLostAvg",
+    "oid": "1.3.6.1.4.1.33555.2.4.1.6",
+    "nodetype": "scalar",
+    "class": "objecttype",
+    "syntax": {
+      "type": "Integer32",
+      "class": "type"
+    },
+    "maxaccess": "read-only",
+    "status": "current",
+    "description": "Local station - Average Tx lost value in hundredths of %."
+  },
+  "wvUccLast": {
+    "name": "wvUccLast",
+    "oid": "1.3.6.1.4.1.33555.2.4.1.7",
+    "nodetype": "scalar",
+    "class": "objecttype",
+    "syntax": {
+      "type": "Integer32",
+      "class": "type"
+    },
+    "maxaccess": "read-only",
+    "status": "current",
+    "description": "Local station - Last UCC value in tenths of Volt (V)."
+  },
+  "wvUccAvg": {
+    "name": "wvUccAvg",
+    "oid": "1.3.6.1.4.1.33555.2.4.1.8",
+    "nodetype": "scalar",
+    "class": "objecttype",
+    "syntax": {
+      "type": "Integer32",
+      "class": "type"
+    },
+    "maxaccess": "read-only",
+    "status": "current",
+    "description": "Local station - Average UCC value in thousandths of Volt (V)."
+  },
+  "wvTempLast": {
+    "name": "wvTempLast",
+    "oid": "1.3.6.1.4.1.33555.2.4.1.9",
+    "nodetype": "scalar",
+    "class": "objecttype",
+    "syntax": {
+      "type": "Integer32",
+      "class": "type"
+    },
+    "maxaccess": "read-only",
+    "status": "current",
+    "description": "Local station - Last device temperature value in tenths of Celsius (C)."
+  },
+  "wvTempAvg": {
+    "name": "wvTempAvg",
+    "oid": "1.3.6.1.4.1.33555.2.4.1.10",
+    "nodetype": "scalar",
+    "class": "objecttype",
+    "syntax": {
+      "type": "Integer32",
+      "class": "type"
+    },
+    "maxaccess": "read-only",
+    "status": "current",
+    "description": "Local station - Average device temperature value in thousandths of Celsius (C)."
+  },
+  "wvRfPwrLast": {
+    "name": "wvRfPwrLast",
+    "oid": "1.3.6.1.4.1.33555.2.4.1.11",
+    "nodetype": "scalar",
+    "class": "objecttype",
+    "syntax": {
+      "type": "Integer32",
+      "class": "type"
+    },
+    "maxaccess": "read-only",
+    "status": "current",
+    "description": "Local station - Last RF power value in tenths of Watt (W)."
+  },
+  "wvRfPwrAvg": {
+    "name": "wvRfPwrAvg",
+    "oid": "1.3.6.1.4.1.33555.2.4.1.12",
+    "nodetype": "scalar",
+    "class": "objecttype",
+    "syntax": {
+      "type": "Integer32",
+      "class": "type"
+    },
+    "maxaccess": "read-only",
+    "status": "current",
+    "description": "Local station - Average RF power value in thousandths of Watt (W)."
+  },
+  "wvVswrLast": {
+    "name": "wvVswrLast",
+    "oid": "1.3.6.1.4.1.33555.2.4.1.13",
+    "nodetype": "scalar",
+    "class": "objecttype",
+    "syntax": {
+      "type": "Integer32",
+      "class": "type"
+    },
+    "maxaccess": "read-only",
+    "status": "current",
+    "description": "Local station - Last VSWR value from interval <3, 25> in tenths."
+  },
+  "wvVswrAvg": {
+    "name": "wvVswrAvg",
+    "oid": "1.3.6.1.4.1.33555.2.4.1.14",
+    "nodetype": "scalar",
+    "class": "objecttype",
+    "syntax": {
+      "type": "Integer32",
+      "class": "type"
+    },
+    "maxaccess": "read-only",
+    "status": "current",
+    "description": "Local station - Average VSWR value from interval <300, 2500> in thousandths."
+  },
+  "wvRxTxEth": {
+    "name": "wvRxTxEth",
+    "oid": "1.3.6.1.4.1.33555.2.4.1.41",
+    "nodetype": "scalar",
+    "class": "objecttype",
+    "syntax": {
+      "type": "Integer32",
+      "class": "type"
+    },
+    "maxaccess": "read-only",
+    "status": "current",
+    "description": "Local station - ETH interface Rx to Tx packets ratio value from interval <1, 10000> in hundredths."
+  },
+  "wvRxTxCom1": {
+    "name": "wvRxTxCom1",
+    "oid": "1.3.6.1.4.1.33555.2.4.1.42",
+    "nodetype": "scalar",
+    "class": "objecttype",
+    "syntax": {
+      "type": "Integer32",
+      "class": "type"
+    },
+    "maxaccess": "read-only",
+    "status": "current",
+    "description": "Local station - COM1 interface Rx to Tx packets ratio value from interval <1, 10000> in hundredths."
+  },
+  "wvRxTxCom2": {
+    "name": "wvRxTxCom2",
+    "oid": "1.3.6.1.4.1.33555.2.4.1.43",
+    "nodetype": "scalar",
+    "class": "objecttype",
+    "syntax": {
+      "type": "Integer32",
+      "class": "type"
+    },
+    "maxaccess": "read-only",
+    "status": "current",
+    "description": "Local station - COM2 interface Rx to Tx packets ratio value from interval <1, 10000> in hundredths."
+  },
+  "wvRemoteNumber": {
+    "name": "wvRemoteNumber",
+    "oid": "1.3.6.1.4.1.33555.2.4.2",
+    "nodetype": "scalar",
+    "class": "objecttype",
+    "syntax": {
+      "type": "Integer32",
+      "class": "type"
+    },
+    "maxaccess": "read-only",
+    "status": "current",
+    "description": "Number of remote stations."
+  },
+  "wvRemoteTable": {
+    "name": "wvRemoteTable",
+    "oid": "1.3.6.1.4.1.33555.2.4.3",
+    "nodetype": "table",
+    "class": "objecttype",
+    "maxaccess": "not-accessible",
+    "status": "current",
+    "description": "List of remote stations."
+  },
+  "wvRemoteEntry": {
+    "name": "wvRemoteEntry",
+    "oid": "1.3.6.1.4.1.33555.2.4.3.1",
+    "nodetype": "row",
+    "class": "objecttype",
+    "maxaccess": "not-accessible",
+    "indices": [
+      {
+        "module": "RIPEX",
+        "object": "wvRemIndex",
+        "implied": 0
+      }
+    ],
+    "status": "current",
+    "description": "Remote station watched values entry."
+  },
+  "wvRemIndex": {
+    "name": "wvRemIndex",
+    "oid": "1.3.6.1.4.1.33555.2.4.3.1.1",
+    "nodetype": "column",
+    "class": "objecttype",
+    "syntax": {
+      "type": "Integer32",
+      "class": "type",
+      "constraints": {
+        "range": [
+          {
+            "min": 1,
+            "max": 256
+          }
+        ]
+      }
+    },
+    "maxaccess": "read-only",
+    "status": "current",
+    "description": "Remote station - Unique index."
+  },
+  "wvRemIpAddr": {
+    "name": "wvRemIpAddr",
+    "oid": "1.3.6.1.4.1.33555.2.4.3.1.2",
+    "nodetype": "column",
+    "class": "objecttype",
+    "syntax": {
+      "type": "OCTET STRING",
+      "class": "type"
+    },
+    "maxaccess": "read-only",
+    "status": "current",
+    "description": "Remote station - IP address."
+  },
+  "wvRemHearings": {
+    "name": "wvRemHearings",
+    "oid": "1.3.6.1.4.1.33555.2.4.3.1.3",
+    "nodetype": "column",
+    "class": "objecttype",
+    "syntax": {
+      "type": "Counter32",
+      "class": "type"
+    },
+    "maxaccess": "read-only",
+    "status": "current",
+    "description": "Remote station - Total heard packets from the remote station."
+  },
+  "wvRemRssLast": {
+    "name": "wvRemRssLast",
+    "oid": "1.3.6.1.4.1.33555.2.4.3.1.4",
+    "nodetype": "column",
+    "class": "objecttype",
+    "syntax": {
+      "type": "Integer32",
+      "class": "type"
+    },
+    "maxaccess": "read-only",
+    "status": "current",
+    "description": "Remote station - Last RSS value in dBm."
+  },
+  "wvRemRssAvg": {
+    "name": "wvRemRssAvg",
+    "oid": "1.3.6.1.4.1.33555.2.4.3.1.5",
+    "nodetype": "column",
+    "class": "objecttype",
+    "syntax": {
+      "type": "Integer32",
+      "class": "type"
+    },
+    "maxaccess": "read-only",
+    "status": "current",
+    "description": "Remote station - Average RSS value in hundredths of dBm."
+  },
+  "wvRemDqLast": {
+    "name": "wvRemDqLast",
+    "oid": "1.3.6.1.4.1.33555.2.4.3.1.6",
+    "nodetype": "column",
+    "class": "objecttype",
+    "syntax": {
+      "type": "Integer32",
+      "class": "type"
+    },
+    "maxaccess": "read-only",
+    "status": "current",
+    "description": "Remote station - Last DQ value."
+  },
+  "wvRemDqAvg": {
+    "name": "wvRemDqAvg",
+    "oid": "1.3.6.1.4.1.33555.2.4.3.1.7",
+    "nodetype": "column",
+    "class": "objecttype",
+    "syntax": {
+      "type": "Integer32",
+      "class": "type"
+    },
+    "maxaccess": "read-only",
+    "status": "current",
+    "description": "Remote station - Average DQ value in hundredths."
+  },
+  "wvRemTxLostLast": {
+    "name": "wvRemTxLostLast",
+    "oid": "1.3.6.1.4.1.33555.2.4.3.1.12",
+    "nodetype": "column",
+    "class": "objecttype",
+    "syntax": {
+      "type": "Integer32",
+      "class": "type"
+    },
+    "maxaccess": "read-only",
+    "status": "current",
+    "description": "Remote station - Last Tx lost value in %."
+  },
+  "wvRemTxLostAvg": {
+    "name": "wvRemTxLostAvg",
+    "oid": "1.3.6.1.4.1.33555.2.4.3.1.13",
+    "nodetype": "column",
+    "class": "objecttype",
+    "syntax": {
+      "type": "Integer32",
+      "class": "type"
+    },
+    "maxaccess": "read-only",
+    "status": "current",
+    "description": "Remote station - Average Tx lost value in hundredths of %."
+  },
+  "wvRemUccLast": {
+    "name": "wvRemUccLast",
+    "oid": "1.3.6.1.4.1.33555.2.4.3.1.14",
+    "nodetype": "column",
+    "class": "objecttype",
+    "syntax": {
+      "type": "Integer32",
+      "class": "type"
+    },
+    "maxaccess": "read-only",
+    "status": "current",
+    "description": "Remote station - Last UCC value in tenths of Volt (V)."
+  },
+  "wvRemUccAvg": {
+    "name": "wvRemUccAvg",
+    "oid": "1.3.6.1.4.1.33555.2.4.3.1.15",
+    "nodetype": "column",
+    "class": "objecttype",
+    "syntax": {
+      "type": "Integer32",
+      "class": "type"
+    },
+    "maxaccess": "read-only",
+    "status": "current",
+    "description": "Remote station - Average UCC value in thousandths of Volt (V)."
+  },
+  "wvRemTempLast": {
+    "name": "wvRemTempLast",
+    "oid": "1.3.6.1.4.1.33555.2.4.3.1.16",
+    "nodetype": "column",
+    "class": "objecttype",
+    "syntax": {
+      "type": "Integer32",
+      "class": "type"
+    },
+    "maxaccess": "read-only",
+    "status": "current",
+    "description": "Remote station - Last device temperature value in tenths of Celsius (C)."
+  },
+  "wvRemTempAvg": {
+    "name": "wvRemTempAvg",
+    "oid": "1.3.6.1.4.1.33555.2.4.3.1.17",
+    "nodetype": "column",
+    "class": "objecttype",
+    "syntax": {
+      "type": "Integer32",
+      "class": "type"
+    },
+    "maxaccess": "read-only",
+    "status": "current",
+    "description": "Remote station - Average device temperature value in thousandths of Celsius (C)."
+  },
+  "wvRemRfPwrLast": {
+    "name": "wvRemRfPwrLast",
+    "oid": "1.3.6.1.4.1.33555.2.4.3.1.18",
+    "nodetype": "column",
+    "class": "objecttype",
+    "syntax": {
+      "type": "Integer32",
+      "class": "type"
+    },
+    "maxaccess": "read-only",
+    "status": "current",
+    "description": "Remote station - Last RF power value in tenths of Watt (W)."
+  },
+  "wvRemRfPwrAvg": {
+    "name": "wvRemRfPwrAvg",
+    "oid": "1.3.6.1.4.1.33555.2.4.3.1.19",
+    "nodetype": "column",
+    "class": "objecttype",
+    "syntax": {
+      "type": "Integer32",
+      "class": "type"
+    },
+    "maxaccess": "read-only",
+    "status": "current",
+    "description": "Remote station - Average RF power value in thousandths of Watt (W)."
+  },
+  "wvRemVswrLast": {
+    "name": "wvRemVswrLast",
+    "oid": "1.3.6.1.4.1.33555.2.4.3.1.20",
+    "nodetype": "column",
+    "class": "objecttype",
+    "syntax": {
+      "type": "Integer32",
+      "class": "type"
+    },
+    "maxaccess": "read-only",
+    "status": "current",
+    "description": "Remote station - Last VSWR value from interval <3, 25> in tenths."
+  },
+  "wvRemVswrAvg": {
+    "name": "wvRemVswrAvg",
+    "oid": "1.3.6.1.4.1.33555.2.4.3.1.21",
+    "nodetype": "column",
+    "class": "objecttype",
+    "syntax": {
+      "type": "Integer32",
+      "class": "type"
+    },
+    "maxaccess": "read-only",
+    "status": "current",
+    "description": "Remote station - Average VSWR value from interval <300, 2500> in thousandths."
+  },
+  "alarmThresholds": {
+    "name": "alarmThresholds",
+    "oid": "1.3.6.1.4.1.33555.2.5.1",
+    "class": "objectidentity"
+  },
+  "alarmState": {
+    "name": "alarmState",
+    "oid": "1.3.6.1.4.1.33555.2.5.2",
+    "class": "objectidentity"
+  },
+  "alarmThrRssMin": {
+    "name": "alarmThrRssMin",
+    "oid": "1.3.6.1.4.1.33555.2.5.1.1",
+    "nodetype": "scalar",
+    "class": "objecttype",
+    "syntax": {
+      "type": "Integer32",
+      "class": "type"
+    },
+    "maxaccess": "read-only",
+    "status": "current",
+    "description": "Alarm threshold - minimum - RSS value in dBm."
+  },
+  "alarmThrRssMax": {
+    "name": "alarmThrRssMax",
+    "oid": "1.3.6.1.4.1.33555.2.5.1.2",
+    "nodetype": "scalar",
+    "class": "objecttype",
+    "syntax": {
+      "type": "Integer32",
+      "class": "type"
+    },
+    "maxaccess": "read-only",
+    "status": "current",
+    "description": "Alarm threshold - maximum - RSS value in dBm."
+  },
+  "alarmThrDqMin": {
+    "name": "alarmThrDqMin",
+    "oid": "1.3.6.1.4.1.33555.2.5.1.3",
+    "nodetype": "scalar",
+    "class": "objecttype",
+    "syntax": {
+      "type": "Integer32",
+      "class": "type"
+    },
+    "maxaccess": "read-only",
+    "status": "current",
+    "description": "Alarm threshold - minimum - DQ value."
+  },
+  "alarmThrDqMax": {
+    "name": "alarmThrDqMax",
+    "oid": "1.3.6.1.4.1.33555.2.5.1.4",
+    "nodetype": "scalar",
+    "class": "objecttype",
+    "syntax": {
+      "type": "Integer32",
+      "class": "type"
+    },
+    "maxaccess": "read-only",
+    "status": "current",
+    "description": "Alarm threshold - maximum - DQ value."
+  },
+  "alarmThrTxLostMin": {
+    "name": "alarmThrTxLostMin",
+    "oid": "1.3.6.1.4.1.33555.2.5.1.9",
+    "nodetype": "scalar",
+    "class": "objecttype",
+    "syntax": {
+      "type": "Integer32",
+      "class": "type"
+    },
+    "maxaccess": "read-only",
+    "status": "current",
+    "description": "Alarm threshold - minimum - Tx lost value in %."
+  },
+  "alarmThrTxLostMax": {
+    "name": "alarmThrTxLostMax",
+    "oid": "1.3.6.1.4.1.33555.2.5.1.10",
+    "nodetype": "scalar",
+    "class": "objecttype",
+    "syntax": {
+      "type": "Integer32",
+      "class": "type"
+    },
+    "maxaccess": "read-only",
+    "status": "current",
+    "description": "Alarm threshold - maximum - Tx lost value in %."
+  },
+  "alarmThrUccMin": {
+    "name": "alarmThrUccMin",
+    "oid": "1.3.6.1.4.1.33555.2.5.1.11",
+    "nodetype": "scalar",
+    "class": "objecttype",
+    "syntax": {
+      "type": "Integer32",
+      "class": "type"
+    },
+    "maxaccess": "read-only",
+    "status": "current",
+    "description": "Alarm threshold - minimum - UCC value in tenths of Volt (V)."
+  },
+  "alarmThrUccMax": {
+    "name": "alarmThrUccMax",
+    "oid": "1.3.6.1.4.1.33555.2.5.1.12",
+    "nodetype": "scalar",
+    "class": "objecttype",
+    "syntax": {
+      "type": "Integer32",
+      "class": "type"
+    },
+    "maxaccess": "read-only",
+    "status": "current",
+    "description": "Alarm threshold - maximum - UCC value in tenths of Volt (V)."
+  },
+  "alarmThrTempMin": {
+    "name": "alarmThrTempMin",
+    "oid": "1.3.6.1.4.1.33555.2.5.1.13",
+    "nodetype": "scalar",
+    "class": "objecttype",
+    "syntax": {
+      "type": "Integer32",
+      "class": "type"
+    },
+    "maxaccess": "read-only",
+    "status": "current",
+    "description": "Alarm threshold - minimum - device temperature value in tenths of Celsius (C)."
+  },
+  "alarmThrTempMax": {
+    "name": "alarmThrTempMax",
+    "oid": "1.3.6.1.4.1.33555.2.5.1.14",
+    "nodetype": "scalar",
+    "class": "objecttype",
+    "syntax": {
+      "type": "Integer32",
+      "class": "type"
+    },
+    "maxaccess": "read-only",
+    "status": "current",
+    "description": "Alarm threshold - maximum - device temperature value in tenths of Celsius (C)."
+  },
+  "alarmThrRfPwrMin": {
+    "name": "alarmThrRfPwrMin",
+    "oid": "1.3.6.1.4.1.33555.2.5.1.15",
+    "nodetype": "scalar",
+    "class": "objecttype",
+    "syntax": {
+      "type": "Integer32",
+      "class": "type"
+    },
+    "maxaccess": "read-only",
+    "status": "current",
+    "description": "Alarm threshold - minimum - RF power value in tenths of Watt (W)."
+  },
+  "alarmThrRfPwrMax": {
+    "name": "alarmThrRfPwrMax",
+    "oid": "1.3.6.1.4.1.33555.2.5.1.16",
+    "nodetype": "scalar",
+    "class": "objecttype",
+    "syntax": {
+      "type": "Integer32",
+      "class": "type"
+    },
+    "maxaccess": "read-only",
+    "status": "current",
+    "description": "Alarm threshold - maximum - RF power value in tenths of Watt (W)."
+  },
+  "alarmThrVswrMin": {
+    "name": "alarmThrVswrMin",
+    "oid": "1.3.6.1.4.1.33555.2.5.1.17",
+    "nodetype": "scalar",
+    "class": "objecttype",
+    "syntax": {
+      "type": "Integer32",
+      "class": "type"
+    },
+    "maxaccess": "read-only",
+    "status": "current",
+    "description": "Alarm threshold - minimum - VSWR value from interval <3, 25> in tenths."
+  },
+  "alarmThrVswrMax": {
+    "name": "alarmThrVswrMax",
+    "oid": "1.3.6.1.4.1.33555.2.5.1.18",
+    "nodetype": "scalar",
+    "class": "objecttype",
+    "syntax": {
+      "type": "Integer32",
+      "class": "type"
+    },
+    "maxaccess": "read-only",
+    "status": "current",
+    "description": "Alarm threshold - maximum - VSWR value from interval <3, 25> in tenths."
+  },
+  "alarmThrRxTxEthMin": {
+    "name": "alarmThrRxTxEthMin",
+    "oid": "1.3.6.1.4.1.33555.2.5.1.31",
+    "nodetype": "scalar",
+    "class": "objecttype",
+    "syntax": {
+      "type": "Integer32",
+      "class": "type"
+    },
+    "maxaccess": "read-only",
+    "status": "current",
+    "description": "Alarm threshold - minimum - ETH interface Rx to Tx packets ratio value in hundredths."
+  },
+  "alarmThrRxTxEthMax": {
+    "name": "alarmThrRxTxEthMax",
+    "oid": "1.3.6.1.4.1.33555.2.5.1.32",
+    "nodetype": "scalar",
+    "class": "objecttype",
+    "syntax": {
+      "type": "Integer32",
+      "class": "type"
+    },
+    "maxaccess": "read-only",
+    "status": "current",
+    "description": "Alarm threshold - maximum - ETH interface Rx to Tx packets ratio value in hundredths."
+  },
+  "alarmThrRxTxCom1Min": {
+    "name": "alarmThrRxTxCom1Min",
+    "oid": "1.3.6.1.4.1.33555.2.5.1.33",
+    "nodetype": "scalar",
+    "class": "objecttype",
+    "syntax": {
+      "type": "Integer32",
+      "class": "type"
+    },
+    "maxaccess": "read-only",
+    "status": "current",
+    "description": "Alarm threshold - minimum - COM1 interface Rx to Tx packets ratio value in hundredths."
+  },
+  "alarmThrRxTxCom1Max": {
+    "name": "alarmThrRxTxCom1Max",
+    "oid": "1.3.6.1.4.1.33555.2.5.1.34",
+    "nodetype": "scalar",
+    "class": "objecttype",
+    "syntax": {
+      "type": "Integer32",
+      "class": "type"
+    },
+    "maxaccess": "read-only",
+    "status": "current",
+    "description": "Alarm threshold - maximum - COM1 interface Rx to Tx packets ratio value in hundredths."
+  },
+  "alarmThrRxTxCom2Min": {
+    "name": "alarmThrRxTxCom2Min",
+    "oid": "1.3.6.1.4.1.33555.2.5.1.35",
+    "nodetype": "scalar",
+    "class": "objecttype",
+    "syntax": {
+      "type": "Integer32",
+      "class": "type"
+    },
+    "maxaccess": "read-only",
+    "status": "current",
+    "description": "Alarm threshold - minimum - COM2 interface Rx to Tx packets ratio value in hundredths."
+  },
+  "alarmThrRxTxCom2Max": {
+    "name": "alarmThrRxTxCom2Max",
+    "oid": "1.3.6.1.4.1.33555.2.5.1.36",
+    "nodetype": "scalar",
+    "class": "objecttype",
+    "syntax": {
+      "type": "Integer32",
+      "class": "type"
+    },
+    "maxaccess": "read-only",
+    "status": "current",
+    "description": "Alarm threshold - maximum - COM2 interface Rx to Tx packets ratio value in hundredths."
+  },
+  "alarmStateRss": {
+    "name": "alarmStateRss",
+    "oid": "1.3.6.1.4.1.33555.2.5.2.1",
+    "nodetype": "scalar",
+    "class": "objecttype",
+    "syntax": {
+      "type": "AlmState",
+      "class": "type"
+    },
+    "maxaccess": "read-only",
+    "status": "current",
+    "description": "Alarm state - RSS."
+  },
+  "alarmStateDq": {
+    "name": "alarmStateDq",
+    "oid": "1.3.6.1.4.1.33555.2.5.2.2",
+    "nodetype": "scalar",
+    "class": "objecttype",
+    "syntax": {
+      "type": "AlmState",
+      "class": "type"
+    },
+    "maxaccess": "read-only",
+    "status": "current",
+    "description": "Alarm state - DQ."
+  },
+  "alarmStateTxLost": {
+    "name": "alarmStateTxLost",
+    "oid": "1.3.6.1.4.1.33555.2.5.2.5",
+    "nodetype": "scalar",
+    "class": "objecttype",
+    "syntax": {
+      "type": "AlmState",
+      "class": "type"
+    },
+    "maxaccess": "read-only",
+    "status": "current",
+    "description": "Alarm state - Tx lost."
+  },
+  "alarmStateUcc": {
+    "name": "alarmStateUcc",
+    "oid": "1.3.6.1.4.1.33555.2.5.2.6",
+    "nodetype": "scalar",
+    "class": "objecttype",
+    "syntax": {
+      "type": "AlmState",
+      "class": "type"
+    },
+    "maxaccess": "read-only",
+    "status": "current",
+    "description": "Alarm state - UCC."
+  },
+  "alarmStateTemp": {
+    "name": "alarmStateTemp",
+    "oid": "1.3.6.1.4.1.33555.2.5.2.7",
+    "nodetype": "scalar",
+    "class": "objecttype",
+    "syntax": {
+      "type": "AlmState",
+      "class": "type"
+    },
+    "maxaccess": "read-only",
+    "status": "current",
+    "description": "Alarm state - device temperature."
+  },
+  "alarmStateRfPwr": {
+    "name": "alarmStateRfPwr",
+    "oid": "1.3.6.1.4.1.33555.2.5.2.8",
+    "nodetype": "scalar",
+    "class": "objecttype",
+    "syntax": {
+      "type": "AlmState",
+      "class": "type"
+    },
+    "maxaccess": "read-only",
+    "status": "current",
+    "description": "Alarm state - RF power."
+  },
+  "alarmStateVswr": {
+    "name": "alarmStateVswr",
+    "oid": "1.3.6.1.4.1.33555.2.5.2.9",
+    "nodetype": "scalar",
+    "class": "objecttype",
+    "syntax": {
+      "type": "AlmState",
+      "class": "type"
+    },
+    "maxaccess": "read-only",
+    "status": "current",
+    "description": "Alarm state - VSWR."
+  },
+  "alarmStateRxTxEth": {
+    "name": "alarmStateRxTxEth",
+    "oid": "1.3.6.1.4.1.33555.2.5.2.16",
+    "nodetype": "scalar",
+    "class": "objecttype",
+    "syntax": {
+      "type": "AlmState",
+      "class": "type"
+    },
+    "maxaccess": "read-only",
+    "status": "current",
+    "description": "Alarm state - ETH interface Rx to Tx packets ratio."
+  },
+  "alarmStateRxTxCom1": {
+    "name": "alarmStateRxTxCom1",
+    "oid": "1.3.6.1.4.1.33555.2.5.2.17",
+    "nodetype": "scalar",
+    "class": "objecttype",
+    "syntax": {
+      "type": "AlmState",
+      "class": "type"
+    },
+    "maxaccess": "read-only",
+    "status": "current",
+    "description": "Alarm state - COM1 interface Rx to Tx packets ratio."
+  },
+  "alarmStateRxTxCom2": {
+    "name": "alarmStateRxTxCom2",
+    "oid": "1.3.6.1.4.1.33555.2.5.2.18",
+    "nodetype": "scalar",
+    "class": "objecttype",
+    "syntax": {
+      "type": "AlmState",
+      "class": "type"
+    },
+    "maxaccess": "read-only",
+    "status": "current",
+    "description": "Alarm state - COM2 interface Rx to Tx packets ratio."
+  },
+  "alarmStateHwInput": {
+    "name": "alarmStateHwInput",
+    "oid": "1.3.6.1.4.1.33555.2.5.2.31",
+    "nodetype": "scalar",
+    "class": "objecttype",
+    "syntax": {
+      "type": "AlmState",
+      "class": "type"
+    },
+    "maxaccess": "read-only",
+    "status": "current",
+    "description": "Alarm state - HW Input."
+  },
+  "alarmStateUnitReady": {
+    "name": "alarmStateUnitReady",
+    "oid": "1.3.6.1.4.1.33555.2.5.2.32",
+    "nodetype": "scalar",
+    "class": "objecttype",
+    "syntax": {
+      "type": "AlmState",
+      "class": "type"
+    },
+    "maxaccess": "read-only",
+    "status": "current",
+    "description": "Alarm state - Unit ready."
+  },
+  "bpathsNumber": {
+    "name": "bpathsNumber",
+    "oid": "1.3.6.1.4.1.33555.2.6.1",
+    "nodetype": "scalar",
+    "class": "objecttype",
+    "syntax": {
+      "type": "Integer32",
+      "class": "type"
+    },
+    "maxaccess": "read-only",
+    "status": "current",
+    "description": "Number of Backup Paths."
+  },
+  "bpathsTable": {
+    "name": "bpathsTable",
+    "oid": "1.3.6.1.4.1.33555.2.6.2",
+    "nodetype": "table",
+    "class": "objecttype",
+    "maxaccess": "not-accessible",
+    "status": "current",
+    "description": "List of Backup Paths entries."
+  },
+  "bpathsEntry": {
+    "name": "bpathsEntry",
+    "oid": "1.3.6.1.4.1.33555.2.6.2.1",
+    "nodetype": "row",
+    "class": "objecttype",
+    "maxaccess": "not-accessible",
+    "indices": [
+      {
+        "module": "RIPEX",
+        "object": "bpathsIndex",
+        "implied": 0
+      }
+    ],
+    "status": "current",
+    "description": "Backup Paths entry."
+  },
+  "bpathsIndex": {
+    "name": "bpathsIndex",
+    "oid": "1.3.6.1.4.1.33555.2.6.2.1.1",
+    "nodetype": "column",
+    "class": "objecttype",
+    "syntax": {
+      "type": "Integer32",
+      "class": "type",
+      "constraints": {
+        "range": [
+          {
+            "min": 1,
+            "max": 16
+          }
+        ]
+      }
+    },
+    "maxaccess": "read-only",
+    "status": "current",
+    "description": "Backup Paths index."
+  },
+  "bpathsPeerIp": {
+    "name": "bpathsPeerIp",
+    "oid": "1.3.6.1.4.1.33555.2.6.2.1.2",
+    "nodetype": "column",
+    "class": "objecttype",
+    "syntax": {
+      "type": "OCTET STRING",
+      "class": "type"
+    },
+    "maxaccess": "read-only",
+    "status": "current",
+    "description": "Backup Paths - Peer IP address."
+  },
+  "bpathsName": {
+    "name": "bpathsName",
+    "oid": "1.3.6.1.4.1.33555.2.6.2.1.3",
+    "nodetype": "column",
+    "class": "objecttype",
+    "syntax": {
+      "type": "BackupPathsName",
+      "class": "type"
+    },
+    "maxaccess": "read-only",
+    "status": "current",
+    "description": "Backup Paths - Symbolic Name."
+  },
+  "bpathsAltUsedPrio": {
+    "name": "bpathsAltUsedPrio",
+    "oid": "1.3.6.1.4.1.33555.2.6.2.1.4",
+    "nodetype": "column",
+    "class": "objecttype",
+    "syntax": {
+      "type": "Integer32",
+      "class": "type"
+    },
+    "maxaccess": "read-only",
+    "status": "current",
+    "description": "Backup Paths - Alternative Paths - Currently used path priority."
+  },
+  "bpathsAltUsedGw": {
+    "name": "bpathsAltUsedGw",
+    "oid": "1.3.6.1.4.1.33555.2.6.2.1.5",
+    "nodetype": "column",
+    "class": "objecttype",
+    "syntax": {
+      "type": "OCTET STRING",
+      "class": "type"
+    },
+    "maxaccess": "read-only",
+    "status": "current",
+    "description": "Backup Paths - Alternative Paths - Currently used path Gateway IP address."
+  },
+  "bpathsAltUsedState": {
+    "name": "bpathsAltUsedState",
+    "oid": "1.3.6.1.4.1.33555.2.6.2.1.6",
+    "nodetype": "column",
+    "class": "objecttype",
+    "syntax": {
+      "type": "BackupPathsState",
+      "class": "type"
+    },
+    "maxaccess": "read-only",
+    "status": "current",
+    "description": "Backup Paths - Alternative Paths - Currently used path State."
+  },
+  "bpathsAltPassiveState": {
+    "name": "bpathsAltPassiveState",
+    "oid": "1.3.6.1.4.1.33555.2.6.2.1.7",
+    "nodetype": "column",
+    "class": "objecttype",
+    "syntax": {
+      "type": "BackupPathsState",
+      "class": "type"
+    },
+    "maxaccess": "read-only",
+    "status": "current",
+    "description": "Backup Paths - Alternative Paths - Currently passive paths State."
+  },
+  "trpRss": {
+    "name": "trpRss",
+    "oid": "1.3.6.1.4.1.33555.2.10.1",
+    "class": "notificationtype",
+    "objects": [
+      {
+        "module": "RIPEX",
+        "object": "alarmStateRss"
+      },
+      {
+        "module": "RIPEX",
+        "object": "wvRemRssAvg"
+      },
+      {
+        "module": "RIPEX",
+        "object": "wvRemIpAddr"
+      }
+    ],
+    "status": "current",
+    "description": "A notification to indicate that average RSS value has exceeded threshold limits. This notification sends additional information about the event by including the following objects in its varbinding list. - alarmStateRss: RSS alarm state. - wvRemRssAvg: Remote station - Average RSS value in hundredths of dBm. - wvRemIpAddr: Remote station IP address. "
+  },
+  "trpDq": {
+    "name": "trpDq",
+    "oid": "1.3.6.1.4.1.33555.2.10.2",
+    "class": "notificationtype",
+    "objects": [
+      {
+        "module": "RIPEX",
+        "object": "alarmStateDq"
+      },
+      {
+        "module": "RIPEX",
+        "object": "wvRemDqAvg"
+      },
+      {
+        "module": "RIPEX",
+        "object": "wvRemIpAddr"
+      }
+    ],
+    "status": "current",
+    "description": "A notification to indicate that average DQ value has exceeded threshold limits. This notification sends additional information about the event by including the following objects in its varbinding list. - alarmStateDq: DQ alarm state. - wvRemDqAvg: Remote station - Average DQ value in hundredths. - wvRemIpAddr: Remote station IP address. "
+  },
+  "trpTxLost": {
+    "name": "trpTxLost",
+    "oid": "1.3.6.1.4.1.33555.2.10.5",
+    "class": "notificationtype",
+    "objects": [
+      {
+        "module": "RIPEX",
+        "object": "alarmStateTxLost"
+      },
+      {
+        "module": "RIPEX",
+        "object": "wvTxLostAvg"
+      }
+    ],
+    "status": "current",
+    "description": "A notification to indicate that average Tx lost value has exceeded threshold limits. This notification sends additional information about the event by including the following objects in its varbinding list. - alarmStateTxLost: Tx lost alarm state. - wvTxLostAvg: Local station - Average Tx lost value in hundredths of %. "
+  },
+  "trpUcc": {
+    "name": "trpUcc",
+    "oid": "1.3.6.1.4.1.33555.2.10.6",
+    "class": "notificationtype",
+    "objects": [
+      {
+        "module": "RIPEX",
+        "object": "alarmStateUcc"
+      },
+      {
+        "module": "RIPEX",
+        "object": "wvUccAvg"
+      }
+    ],
+    "status": "current",
+    "description": "A notification to indicate that average UCC value has exceeded threshold limits. This notification sends additional information about the event by including the following objects in its varbinding list. - alarmStateUcc: UCC alarm state. - wvUccAvg: Local station - Average UCC value in thousandths of Volt (V). "
+  },
+  "trpTemp": {
+    "name": "trpTemp",
+    "oid": "1.3.6.1.4.1.33555.2.10.7",
+    "class": "notificationtype",
+    "objects": [
+      {
+        "module": "RIPEX",
+        "object": "alarmStateTemp"
+      },
+      {
+        "module": "RIPEX",
+        "object": "wvTempAvg"
+      }
+    ],
+    "status": "current",
+    "description": "A notification to indicate that average device temperature value has exceeded threshold limits. This notification sends additional information about the event by including the following objects in its varbinding list. - alarmStateTemp: Device temperature alarm state. - wvTempAvg: Local station - Average device temperature value in thousandths of Celsius (C). "
+  },
+  "trpRfPwr": {
+    "name": "trpRfPwr",
+    "oid": "1.3.6.1.4.1.33555.2.10.8",
+    "class": "notificationtype",
+    "objects": [
+      {
+        "module": "RIPEX",
+        "object": "alarmStateRfPwr"
+      },
+      {
+        "module": "RIPEX",
+        "object": "wvRfPwrAvg"
+      }
+    ],
+    "status": "current",
+    "description": "A notification to indicate that average RF power value has exceeded threshold limits. This notification sends additional information about the event by including the following objects in its varbinding list. - alarmStateRfPwr: RF power alarm state. - wvRfPwrAvg: Local station - Average RF power value in thousandths of Watt (W). "
+  },
+  "trpVswr": {
+    "name": "trpVswr",
+    "oid": "1.3.6.1.4.1.33555.2.10.9",
+    "class": "notificationtype",
+    "objects": [
+      {
+        "module": "RIPEX",
+        "object": "alarmStateVswr"
+      },
+      {
+        "module": "RIPEX",
+        "object": "wvVswrAvg"
+      }
+    ],
+    "status": "current",
+    "description": "A notification to indicate that average VSWR value has exceeded threshold limits. This notification sends additional information about the event by including the following objects in its varbinding list. - alarmStateVswr: VSWR alarm state. - wvVswrAvg: Local station - Average VSWR value from interval <300, 2500> in thousandths. "
+  },
+  "trpEthPr": {
+    "name": "trpEthPr",
+    "oid": "1.3.6.1.4.1.33555.2.10.10",
+    "class": "notificationtype",
+    "objects": [
+      {
+        "module": "RIPEX",
+        "object": "alarmStateRxTxEth"
+      },
+      {
+        "module": "RIPEX",
+        "object": "wvRxTxEth"
+      }
+    ],
+    "status": "current",
+    "description": "A notification to indicate that average ETH interface Rx to Tx packets ratio value has exceeded threshold limits. This notification sends additional information about the event by including the following objects in its varbinding list. - alarmStateRxTxEth: Alarm state of ETH Rx to Tx packets ratio value. - wvRxTxEth: Local station - ETH Rx to Tx packets ratio value from interval <1, 10000> in hundredths. "
+  },
+  "trpCom1Pr": {
+    "name": "trpCom1Pr",
+    "oid": "1.3.6.1.4.1.33555.2.10.11",
+    "class": "notificationtype",
+    "objects": [
+      {
+        "module": "RIPEX",
+        "object": "alarmStateRxTxCom1"
+      },
+      {
+        "module": "RIPEX",
+        "object": "wvRxTxCom1"
+      }
+    ],
+    "status": "current",
+    "description": "A notification to indicate that average COM1 interface Rx to Tx packets ratio value has exceeded threshold limits. This notification sends additional information about the event by including the following objects in its varbinding list. - alarmStateRxTxCom1: Alarm state of COM1 Rx to Tx packets ratio value. - wvRxTxCom1: Local station - COM1 Rx to Tx packets ratio value from interval <1, 10000> in hundredths. "
+  },
+  "trpCom2Pr": {
+    "name": "trpCom2Pr",
+    "oid": "1.3.6.1.4.1.33555.2.10.12",
+    "class": "notificationtype",
+    "objects": [
+      {
+        "module": "RIPEX",
+        "object": "alarmStateRxTxCom2"
+      },
+      {
+        "module": "RIPEX",
+        "object": "wvRxTxCom2"
+      }
+    ],
+    "status": "current",
+    "description": "A notification to indicate that average COM2 interface Rx to Tx packets ratio value has exceeded threshold limits. This notification sends additional information about the event by including the following objects in its varbinding list. - alarmStateRxTxCom2: Alarm state of COM2 Rx to Tx packets ratio value. - wvRxTxCom2: Local station - COM2 Rx to Tx packets ratio value from interval <1, 10000> in hundredths. "
+  },
+  "trpHwIn": {
+    "name": "trpHwIn",
+    "oid": "1.3.6.1.4.1.33555.2.10.13",
+    "class": "notificationtype",
+    "objects": [
+      {
+        "module": "RIPEX",
+        "object": "ifHwAInputState"
+      },
+      {
+        "module": "RIPEX",
+        "object": "ifHwAInputType"
+      }
+    ],
+    "status": "current",
+    "description": "A notification to indicate that HW alarm input state has changed. This notification sends additional information about the event by including the following objects in its varbinding list. - ifHwAInputState: HW alarm input contact state. - ifHwAInputType: HW alarm input contact type. "
+  },
+  "trpHotStby": {
+    "name": "trpHotStby",
+    "oid": "1.3.6.1.4.1.33555.2.10.14",
+    "class": "notificationtype",
+    "objects": [
+      {
+        "module": "RIPEX",
+        "object": "serialNumber"
+      },
+      {
+        "module": "RIPEX",
+        "object": "stationName"
+      }
+    ],
+    "status": "current",
+    "description": "A notification to indicate that device in Hot Standby mode has been activated. This notification sends additional information about the event by including the following objects in its varbinding list. - serialNumber: Product serial number. - stationName: Station name. "
+  },
+  "trpBpath": {
+    "name": "trpBpath",
+    "oid": "1.3.6.1.4.1.33555.2.10.15",
+    "class": "notificationtype",
+    "objects": [
+      {
+        "module": "RIPEX",
+        "object": "bpathsPeerIp"
+      },
+      {
+        "module": "RIPEX",
+        "object": "bpathsName"
+      },
+      {
+        "module": "RIPEX",
+        "object": "bpathsAltUsedPrio"
+      },
+      {
+        "module": "RIPEX",
+        "object": "bpathsAltUsedGw"
+      },
+      {
+        "module": "RIPEX",
+        "object": "bpathsAltUsedState"
+      }
+    ],
+    "status": "current",
+    "description": "A notification to indicate a change in Backup paths system - backup path state has changed. This notification sends additional information about the event by including the following objects in its varbinding list. - bpathsPeerIp: Backup path peer IP address. - bpathsName: Backup path symbolic name. - bpathsAltUsedPrio: Currently used alternative path priority number. - bpathsAltUsedGw: Currently used alternative path gateway IP address. - bpathsAltUsedState: Currently used alternative path state. "
+  },
+  "trpBpathAlt": {
+    "name": "trpBpathAlt",
+    "oid": "1.3.6.1.4.1.33555.2.10.16",
+    "class": "notificationtype",
+    "objects": [
+      {
+        "module": "RIPEX",
+        "object": "bpathsPeerIp"
+      },
+      {
+        "module": "RIPEX",
+        "object": "bpathsName"
+      },
+      {
+        "module": "RIPEX",
+        "object": "bpathsAltUsedPrio"
+      },
+      {
+        "module": "RIPEX",
+        "object": "bpathsAltUsedGw"
+      },
+      {
+        "module": "RIPEX",
+        "object": "bpathsAltUsedState"
+      }
+    ],
+    "status": "current",
+    "description": "A notification to indicate a change in Backup paths system - alternative path state has changed. This notification sends additional information about the event by including the following objects in its varbinding list. - bpathsPeerIp: Backup path peer IP address. - bpathsName: Backup path symbolic name. - bpathsAltUsedPrio: Currently used alternative path priority number. - bpathsAltUsedGw: Currently used alternative path gateway IP address. - bpathsAltUsedState: Currently used alternative path state. "
+  },
+  "trpUnitReady": {
+    "name": "trpUnitReady",
+    "oid": "1.3.6.1.4.1.33555.2.10.17",
+    "class": "notificationtype",
+    "objects": [
+      {
+        "module": "RIPEX",
+        "object": "alarmStateUnitReady"
+      }
+    ],
+    "status": "current",
+    "description": "A notification to indicate that Unit ready signal has changed. This notification sends additional information about the event by including the following objects in its varbinding list. - alarmStateUnitReady: alarm input state. "
+  },
+  "meta": {
+    "comments": [
+      "ASN.1 source file:///usr/share/snmp/mibs/RACOM-RIPEX.mib",
+      "Produced by pysmi-0.3.4 at Wed Jan 27 19:10:20 2021",
+      "On host rspbi platform Linux version 5.4.83-v7l+ by user pi",
+      "Using Python version 3.7.3 (default, Jul 25 2020, 13:03:44) "
+    ],
+    "module": "RIPEX"
+  }
+}
