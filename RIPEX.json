@@ -2,34 +2,34 @@
   "imports": {
     "class": "imports",
     "SNMPv2-CONF": [
-      "MODULE-COMPLIANCE",
       "OBJECT-GROUP",
+      "MODULE-COMPLIANCE",
       "NOTIFICATION-GROUP"
     ],
     "SNMPv2-MIB": [
       "snmpTraps"
     ],
     "SNMPv2-SMI": [
-      "OBJECT-TYPE",
       "enterprises",
+      "Counter64",
+      "Gauge32",
+      "OBJECT-IDENTITY",
+      "mib-2",
       "Integer32",
       "iso",
-      "Counter64",
-      "IpAddress",
-      "Unsigned32",
-      "Counter32",
-      "NOTIFICATION-TYPE",
       "MODULE-IDENTITY",
-      "Gauge32",
+      "Counter32",
       "Bits",
+      "Unsigned32",
+      "NOTIFICATION-TYPE",
+      "TimeTicks",
       "MibIdentifier",
-      "mib-2",
-      "OBJECT-IDENTITY",
-      "TimeTicks"
+      "IpAddress",
+      "OBJECT-TYPE"
     ],
     "SNMPv2-TC": [
-      "TEXTUAL-CONVENTION",
-      "DisplayString"
+      "DisplayString",
+      "TEXTUAL-CONVENTION"
     ]
   },
   "ripex": {
@@ -3277,7 +3277,7 @@
   "meta": {
     "comments": [
       "ASN.1 source file:///usr/share/snmp/mibs/RACOM-RIPEX.mib",
-      "Produced by pysmi-0.3.4 at Wed Jan 27 19:10:20 2021",
+      "Produced by pysmi-0.3.4 at Wed Jan 27 20:57:11 2021",
       "On host rspbi platform Linux version 5.4.83-v7l+ by user pi",
       "Using Python version 3.7.3 (default, Jul 25 2020, 13:03:44) "
     ],

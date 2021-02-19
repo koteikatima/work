@@ -1,0 +1,198 @@
+{
+  "imports": {
+    "class": "imports",
+    "SNMPv2-CONF": [
+      "NOTIFICATION-GROUP",
+      "MODULE-COMPLIANCE"
+    ],
+    "SNMPv2-SMI": [
+      "Integer32",
+      "MODULE-IDENTITY",
+      "Gauge32",
+      "TimeTicks",
+      "OBJECT-IDENTITY",
+      "Unsigned32",
+      "Counter32",
+      "Counter64",
+      "NOTIFICATION-TYPE",
+      "OBJECT-TYPE",
+      "Bits",
+      "IpAddress",
+      "MibIdentifier",
+      "iso"
+    ],
+    "SNMPv2-TC": [
+      "DisplayString",
+      "TEXTUAL-CONVENTION"
+    ],
+    "TPLINK-MIB": [
+      "tplinkMgmt"
+    ]
+  },
+  "tplinkHttp": {
+    "name": "tplinkHttp",
+    "oid": "1.3.6.1.4.1.11863.6.51",
+    "class": "moduleidentity",
+    "revisions": [
+      {
+        "revision": "2015-01-21 10:30",
+        "description": "Initial version of this MIB module."
+      }
+    ],
+    "lastupdated": "201501211030Z",
+    "organization": "TPLINK",
+    "contactinfo": "www.tplink.com",
+    "description": "Private MIB for HTTP configuration."
+  },
+  "tplinkHttpMIBObjects": {
+    "name": "tplinkHttpMIBObjects",
+    "oid": "1.3.6.1.4.1.11863.6.51.1",
+    "class": "objectidentity"
+  },
+  "tplinkHttpMIBNotifications": {
+    "name": "tplinkHttpMIBNotifications",
+    "oid": "1.3.6.1.4.1.11863.6.51.2",
+    "class": "objectidentity"
+  },
+  "httpEnable": {
+    "name": "httpEnable",
+    "oid": "1.3.6.1.4.1.11863.6.51.1.1",
+    "nodetype": "scalar",
+    "class": "objecttype",
+    "syntax": {
+      "type": "INTEGER",
+      "class": "type",
+      "constraints": {
+        "enumeration": {
+          "disable": 0,
+          "enable": 1
+        }
+      }
+    },
+    "maxaccess": "read-write",
+    "status": "current",
+    "description": "0. disable 1. enable"
+  },
+  "httpSessionTimeOut": {
+    "name": "httpSessionTimeOut",
+    "oid": "1.3.6.1.4.1.11863.6.51.1.2",
+    "nodetype": "scalar",
+    "class": "objecttype",
+    "syntax": {
+      "type": "INTEGER",
+      "class": "type",
+      "constraints": {
+        "range": [
+          {
+            "min": 5,
+            "max": 30
+          }
+        ]
+      }
+    },
+    "maxaccess": "read-write",
+    "status": "current",
+    "description": "HTTP session timeout in minutes."
+  },
+  "httpUserLimitEnable": {
+    "name": "httpUserLimitEnable",
+    "oid": "1.3.6.1.4.1.11863.6.51.1.3",
+    "nodetype": "scalar",
+    "class": "objecttype",
+    "syntax": {
+      "type": "INTEGER",
+      "class": "type",
+      "constraints": {
+        "enumeration": {
+          "disable": 0,
+          "enable": 1
+        }
+      }
+    },
+    "maxaccess": "read-write",
+    "status": "current",
+    "description": "0. disable 1.enable"
+  },
+  "httpUserLimitMaxAdminNum": {
+    "name": "httpUserLimitMaxAdminNum",
+    "oid": "1.3.6.1.4.1.11863.6.51.1.4",
+    "nodetype": "scalar",
+    "class": "objecttype",
+    "syntax": {
+      "type": "INTEGER",
+      "class": "type"
+    },
+    "maxaccess": "read-write",
+    "status": "current",
+    "description": "The max num of users as Admin. You should enable HTTP user number limiting before setting this object."
+  },
+  "httpUserLimitMaxOperatorNum": {
+    "name": "httpUserLimitMaxOperatorNum",
+    "oid": "1.3.6.1.4.1.11863.6.51.1.5",
+    "nodetype": "scalar",
+    "class": "objecttype",
+    "syntax": {
+      "type": "INTEGER",
+      "class": "type"
+    },
+    "maxaccess": "read-write",
+    "status": "current",
+    "description": "The max num of users as Operator. You should enable HTTP user number limiting before setting this object."
+  },
+  "httpUserLimitMaxPowerUserNum": {
+    "name": "httpUserLimitMaxPowerUserNum",
+    "oid": "1.3.6.1.4.1.11863.6.51.1.6",
+    "nodetype": "scalar",
+    "class": "objecttype",
+    "syntax": {
+      "type": "INTEGER",
+      "class": "type"
+    },
+    "maxaccess": "read-write",
+    "status": "current",
+    "description": "The max num of users as Power User. You should enable HTTP user number limiting before setting this object."
+  },
+  "httpUserLimitMaxUserNum": {
+    "name": "httpUserLimitMaxUserNum",
+    "oid": "1.3.6.1.4.1.11863.6.51.1.7",
+    "nodetype": "scalar",
+    "class": "objecttype",
+    "syntax": {
+      "type": "INTEGER",
+      "class": "type"
+    },
+    "maxaccess": "read-write",
+    "status": "current",
+    "description": "The max num of users as User. You should enable HTTP user number limiting before setting this object."
+  },
+  "httpPort": {
+    "name": "httpPort",
+    "oid": "1.3.6.1.4.1.11863.6.51.1.8",
+    "nodetype": "scalar",
+    "class": "objecttype",
+    "syntax": {
+      "type": "INTEGER",
+      "class": "type",
+      "constraints": {
+        "range": [
+          {
+            "min": 1,
+            "max": 65535
+          }
+        ]
+      }
+    },
+    "maxaccess": "read-write",
+    "status": "current",
+    "description": "HTTP server port number."
+  },
+  "meta": {
+    "comments": [
+      "ASN.1 source file:///usr/share/snmp/mibs/TPLINK-HTTP-MIB.mib",
+      "Produced by pysmi-0.3.4 at Thu Feb 18 01:27:54 2021",
+      "On host rspbi platform Linux version 5.4.83-v7l+ by user pi",
+      "Using Python version 3.7.3 (default, Jul 25 2020, 13:03:44) "
+    ],
+    "module": "TPLINK-HTTP-MIB"
+  }
+}
